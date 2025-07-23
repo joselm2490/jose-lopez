@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>José López - Ingeniero en Informática</title>
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/7297/7297864.png" type="image/jpg">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="js/generateCV.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -129,12 +134,12 @@
                          Laravel | PHP | Base de Datos (SQL Server y MySQL) | HTML | JavaScript
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="cv.php" class="cv-button inline-flex items-center justify-center px-8 py-3 border-2 border-gray-300 text-dark-500 font-medium rounded-lg transition-all duration-300 hover:shadow-md">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                            </svg>
-                            Descargar CV
-                        </a>
+                        <a href="#" onclick="generateCV()" class="cv-button inline-flex items-center justify-center px-8 py-3 border-2 border-gray-300 text-dark-500 font-medium rounded-lg transition-all duration-300 hover:shadow-md">
+    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+    </svg>
+    Descargar CV
+</a>
                         <a href="#experience" class="inline-flex items-center justify-center px-8 py-3 bg-white text-primary-600 font-medium rounded-lg border-2 border-primary-100 transition-all duration-300 hover:bg-primary-50 hover:shadow-md">
                             Ver experiencia
                         </a>
@@ -243,36 +248,43 @@
                         <p class="font-bold text-gray-800">SQLServer</p>
                         </div>
                         </div>
-                       <!--  <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-                            <h3 class="font-bold text-primary-600 mb-2">Control de Versiones</h3>
-                            <p class="text-sm text-dark-500">Git</p>
-                        </div> -->
+                 
+
+                        <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+    <h3 class="font-bold text-primary-600 mb-2">Control de Versiones</h3>
+     <div class="flex flex-wrap gap-2 items-center mb-2">
+                            <img src="https://avatars.githubusercontent.com/u/18133?s=280&v=4" alt="Git" class="h-10 w-auto" title="Git">
+                            <p class="font-bold text-gray-800">Git</p>
+                        </div>
+   <div class="flex flex-wrap gap-2 items-center mb-2">
+                            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="h-10 w-auto" title="GitHub">
+                            <p class="font-bold text-gray-800">GitHub</p>
+                        </div>
+</div>
 
                        <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
     <h3 class="font-bold text-primary-600 mb-2">Gestión de Proyectos</h3>
    <div class="flex flex-wrap gap-2 items-center mb-2">
-                            <img src="https://cdn-icons-png.flaticon.com/512/732/732252.png" alt="Trello" class="h-10 w-auto" title="JavaScript">
+                            <img src="https://cdn-icons-png.flaticon.com/512/732/732252.png" alt="Trello" class="h-10 w-auto" title="Trello">
                             <p class="font-bold text-gray-800">Trello</p>
                         </div>
 </div>
-                        <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-                            <h3 class="font-bold text-primary-600 mb-2">Metodologías</h3>
-
-                             <div class="flex flex-wrap gap-2 items-center mb-2">
-                            <img src="https://donetonic.com/wp-content/uploads/2023/05/agile.png" alt="Agile" class="h-10 w-auto" title="JavaScript">
-                            <p class="font-bold text-gray-800">Agile</p>
-                        </div>
-
-                             <div class="flex flex-wrap gap-2 items-center mb-2">
-                            <img src="https://donetonic.com/wp-content/uploads/2023/05/waterfall.png" alt="Waterfall" class="h-10 w-auto" title="JavaScript">
-                            <p class="font-bold text-gray-800">Waterfall</p>
-                        </div>
-                            
-                        </div>
-                        <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-                            <h3 class="font-bold text-primary-600 mb-2">Habilidades</h3>
-                            <p class="text-sm text-dark-500">Resolución de problemas, Análisis</p>
-                        </div>
+                       
+                     <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+    <h3 class="font-bold text-primary-600 mb-2">Plataformas de Comunicación</h3>
+    
+    <div class="flex flex-wrap gap-2 items-center mb-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_(2020).svg" alt="Google Meet" class="h-10 w-auto" title="Google Meet">
+        <p class="font-bold text-gray-800">Google Meet</p>
+    </div>
+    
+    <div class="flex flex-wrap gap-2 items-center mb-2">
+        <img src="https://images.sftcdn.net/images/t_app-icon-m/p/2486f21e-867f-42e2-ae4f-27a6359b8c2b/1955750890/zoom-unnamed%20(73).png" alt="Zoom" class="h-10 w-auto" title="Zoom">
+        <p class="font-bold text-gray-800">Zoom</p>
+    </div>
+    
+ 
+</div>
                     </div>
                 </div>
             </div>
@@ -332,7 +344,7 @@
                 <!-- Experience Card 2 -->
                 <div class="experience-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 transition-all duration-300">
                     <div class="flex items-start mb-6">
-                        <img src="https://scontent.fccs10-1.fna.fbcdn.net/v/t39.30808-6/306000578_515522650573519_4942912496593914951_n.png?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ZL5VF2TUVl8Q7kNvwGm8HAZ&_nc_oc=AdmWf9CMdQCAq4x3XYNTT8i7p40pdriTyBfHkafMTKgHo8rnZbM1QLBbbMZy7zimF6M&_nc_zt=23&_nc_ht=scontent.fccs10-1.fna&_nc_gid=w6hQxBAzmWkRbx47-cmO9w&oh=00_AfRRnwKJ_iP4bXdjKUZjZjd64gtLPgStHIGvPa93T3XvvQ&oe=687D0694" 
+                        <img src="https://media.licdn.com/dms/image/v2/C4E0BAQH3pvdJSr-Z3w/company-logo_200_200/company-logo_200_200/0/1631319079816?e=1756339200&v=beta&t=ctfTL9tpSVaDw_dS64Bhwr2UpP2Ai1e8BZ8dLqhvpsA" 
                              alt="Tappers" 
                              class="w-14 h-14 mr-4 rounded-lg object-cover bg-gray-200">
                         <div>
