@@ -1,16 +1,33 @@
+// js/generateCV.js
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadBtn = document.getElementById('downloadCV');
+    
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            generateCV();
+        });
+    } else {
+        console.error('No se encontró el botón con ID "downloadCV"');
+    }
+});
+
 async function generateCV() {
     try {
-        // Verificar librerías
-        if (typeof jspdf === 'undefined' || typeof html2canvas === 'undefined') {
-            throw new Error('Las librerías necesarias no están cargadas');
+        // Verificar si jsPDF y las dependencias están cargadas
+        if (typeof jspdf === 'undefined') {
+            throw new Error('La librería jsPDF no está cargada correctamente');
+        }
+        if (typeof html2canvas === 'undefined') {
+            throw new Error('La librería html2canvas no está cargada correctamente');
         }
 
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF('p', 'mm', 'a4');
         
-        // Crear contenedor con tamaño específico
+        // Crear el contenido HTML del CV
         const cvContent = document.createElement('div');
-        cvContent.style.width = '190mm'; // Un poco menos que A4 para márgenes
+        cvContent.style.width = '190mm';
         cvContent.style.padding = '15mm';
         cvContent.style.fontFamily = 'Helvetica, Arial, sans-serif';
         cvContent.style.fontSize = '12pt';
@@ -72,6 +89,10 @@ async function generateCV() {
                 margin-left: 15px;
                 margin-bottom: 8px;
                 font-size: 10.5pt;
+            }
+            .skill-item {
+                margin-left: 10px;
+                margin-bottom: 3px;
             }
             .col2-table {
                 width: 100%;
@@ -140,8 +161,16 @@ async function generateCV() {
                     <div class="skills-category">Bases de Datos:</div>
                     <div class="skills-list">MySQL, SQL Server</div>
                     
+                    <div class="skills-category">Control de Versiones:</div>
+                    <div class="skill-item">Git</div>
+                    <div class="skill-item">GitHub</div>
+                    
                     <div class="skills-category">Gestión de Proyectos:</div>
-                    <div class="skills-list">Trello</div>
+                    <div class="skill-item">Trello</div>
+                    
+                    <div class="skills-category">Plataformas de Comunicación:</div>
+                    <div class="skill-item">Google Meet</div>
+                    <div class="skill-item">Zoom</div>
                 </td>
                 
                 <td>
