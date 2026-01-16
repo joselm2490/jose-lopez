@@ -19,10 +19,10 @@ const SubstrateEffect = (() => {
         this.update = function (data) {
             const isDark = document.documentElement.classList.contains('dark');
             if (isDark) {
-                context.strokeStyle = 'rgba(226, 232, 240, 0.1)'; 
-                context.lineWidth = 0.8; 
+                context.strokeStyle = 'rgba(226, 232, 240, 0.1)';
+                context.lineWidth = 0.8;
             } else {
-                context.strokeStyle = 'rgba(0, 0, 0, 0.08)'; 
+                context.strokeStyle = 'rgba(0, 0, 0, 0.08)';
                 context.lineWidth = 1.0;
             }
 
@@ -54,7 +54,7 @@ const SubstrateEffect = (() => {
             document.body.insertBefore(canvas, document.body.firstChild);
             context = canvas.getContext('2d', { willReadFrequently: true });
             window.addEventListener('resize', resize);
-            resize(); 
+            resize();
             window.addEventListener('pointerdown', function (event) {
                 const x = event.clientX * dpr;
                 const y = event.clientY * dpr;
@@ -108,7 +108,7 @@ const SubstrateEffect = (() => {
 })();
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     SubstrateEffect.init();
     SubstrateEffect.start();
 
@@ -131,64 +131,64 @@ document.addEventListener('DOMContentLoaded', function() {
                 htmlElement.classList.add('dark');
                 localStorage.theme = 'dark';
             }
-            SubstrateEffect.reset(); 
+            SubstrateEffect.reset();
         });
     }
 
     // --- GENERADOR DE BURBUJAS PARA EL FOOTER ---
     const footerBubbles = document.getElementById('footer-bubbles');
-    
+
     if (footerBubbles) {
         for (let i = 0; i < 128; i++) {
             const bubble = document.createElement('div');
             bubble.classList.add('bubble');
-            const size = 2 + Math.random() * 4; 
-            const distance = 2 + Math.random() * 3; 
-            const position = -5 + Math.random() * 110; 
-            const time = 2 + Math.random() * 2; 
-            const delay = -1 * (2 + Math.random() * 2); 
-            
+            const size = 2 + Math.random() * 4;
+            const distance = 2 + Math.random() * 3;
+            const position = -5 + Math.random() * 110;
+            const time = 2 + Math.random() * 2;
+            const delay = -1 * (2 + Math.random() * 2);
+
             bubble.style.setProperty('--size', `${size}rem`);
             bubble.style.setProperty('--distance', `${distance}rem`);
             bubble.style.setProperty('--position', `${position}%`);
             bubble.style.setProperty('--time', `${time}s`);
             bubble.style.setProperty('--delay', `${delay}s`);
-            
+
             footerBubbles.appendChild(bubble);
         }
     }
 
     // --- DINO SKILLS ARCADE EFFECT ---
     const SKILLS = [
-        "PHP", "Laravel", "Livewire", "Python", "Odoo", 
-        "HTML5", "Tailwind", "Bootstrap", "JavaScript", 
-        "Next.js", "MySQL", "SQL Server", "PostgreSQL", 
-        "Git", "GitHub", "GitLab", "Trello", 
+        "PHP", "Laravel", "Livewire", "Python", "Odoo",
+        "HTML5", "Tailwind", "Bootstrap", "JavaScript",
+        "Next.js", "MySQL", "SQL Server", "PostgreSQL",
+        "Git", "GitHub", "GitLab", "Trello",
         "OpenProject", "Google Meet", "Zoom", "Docker", "Postman"
     ];
-    
+
     const SKILL_CONTAINER = document.getElementById('skill-cloud-container');
     let lastLaneIndex = -1;
 
     function spawnSkillBird() {
-        if (!SKILL_CONTAINER || document.hidden) return; 
+        if (!SKILL_CONTAINER || document.hidden) return;
 
         const skillName = SKILLS[Math.floor(Math.random() * SKILLS.length)];
         const bird = document.createElement('div');
-        
+
         bird.classList.add('skill-bird', 'font-pixel');
         bird.innerText = skillName;
 
         // --- SOLUCIÓN: SOLO 2 CARRILES SUPERIORES ---
         // 5% y 20% para asegurar que pasan MUY arriba del Dino gigante
-        const lanes = [5, 20]; 
-        
+        const lanes = [5, 20];
+
         let laneIndex;
         // Alternar carriles para evitar colisiones
         do {
             laneIndex = Math.floor(Math.random() * lanes.length);
         } while (laneIndex === lastLaneIndex && lanes.length > 1);
-        
+
         lastLaneIndex = laneIndex;
 
         bird.style.top = `${lanes[laneIndex]}%`;
@@ -206,10 +206,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startSkillRotation() {
         spawnSkillBird();
-        
+
         const loop = () => {
             // Intervalo de aparición fijo y suficiente para dar espacio
-            const timeNext = 2500; 
+            const timeNext = 2500;
             setTimeout(() => {
                 spawnSkillBird();
                 loop();
@@ -222,8 +222,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const consoleElement = document.getElementById('text');
     if (consoleElement) {
         const words = ['Ingeniero en Informática', 'Desarrollador Full Stack', 'Desarrollador Web'];
-        const colors = ['#0284c7', '#0ea5e9', '#38bdf8']; 
-        
+        const colors = ['#0284c7', '#0ea5e9', '#38bdf8'];
+
         consoleText(words, 'text', colors);
     }
 
@@ -235,14 +235,14 @@ document.addEventListener('DOMContentLoaded', function() {
         var x = 1;
         var waiting = false;
         var target = document.getElementById(id);
-        
+
         target.setAttribute('style', 'color:' + colors[0]);
-        
-        window.setInterval(function() {
+
+        window.setInterval(function () {
             if (letterCount === 0 && waiting === false) {
                 waiting = true;
                 target.innerHTML = words[0].substring(0, letterCount);
-                window.setTimeout(function() {
+                window.setTimeout(function () {
                     var usedColor = colors.shift();
                     colors.push(usedColor);
                     var usedWord = words.shift();
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 1000);
             } else if (letterCount === words[0].length + 1 && waiting === false) {
                 waiting = true;
-                window.setTimeout(function() {
+                window.setTimeout(function () {
                     x = -1;
                     letterCount += x;
                     waiting = false;
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 120);
 
-        window.setInterval(function() {
+        window.setInterval(function () {
             if (visible === true) {
                 con.className = 'console-underscore hidden';
                 visible = false;
@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- TILT & GLOW ---
     VanillaTilt.init(document.querySelectorAll(".js-tilt"), {
-        max: 10, speed: 400, glare: true, "max-glare": 0.1, scale: 1.02, gyroscope: true
+        max: 2, speed: 800, glare: true, "max-glare": 0.05, scale: 1.00, gyroscope: false
     });
 
     const glowCards = document.querySelectorAll('.glow-card');
@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // --- LOAD FADE-IN ---
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 0.5s ease';
         setTimeout(() => {
@@ -345,9 +345,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.getElementById('submitBtn');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             // Estado de carga
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.disabled = true;
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.classList.add('hidden');
 
             const formData = new FormData(contactForm);
-            
+
             try {
                 const response = await fetch(contactForm.action, {
                     method: contactForm.method,
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // --- FUNCIÓN GLOBAL PARA COPIAR EMAIL ---
-window.copyEmail = function(e) {
+window.copyEmail = function (e) {
     e.preventDefault();
     const email = "joselm2490@gmail.com";
     navigator.clipboard.writeText(email).then(() => {
