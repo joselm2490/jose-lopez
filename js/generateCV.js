@@ -1,247 +1,219 @@
 // js/generateCV.js
+
 document.addEventListener('DOMContentLoaded', function() {
-    const downloadBtn = document.getElementById('downloadCV');
-    
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            generateCV();
-        });
-    } else {
-        console.error('No se encontró el botón con ID "downloadCV"');
-    }
+    const downloadBtn = document.getElementById('downloadCV'); // Asegúrate de que tu botón tenga este ID o la clase que usaste en el HTML
+    // En tu HTML el botón tiene onclick="generateCV()", así que la función debe ser global.
 });
 
-async function generateCV() {
-    try {
-        // Verificar si jsPDF y las dependencias están cargadas
-        if (typeof jspdf === 'undefined') {
-            throw new Error('La librería jsPDF no está cargada correctamente');
-        }
-        if (typeof html2canvas === 'undefined') {
-            throw new Error('La librería html2canvas no está cargada correctamente');
-        }
+// Hacemos la función global para que funcione con el onclick del HTML
+window.generateCV = async function() {
+    if (typeof jspdf === 'undefined') {
+        alert('Error: La librería jsPDF no está cargada.');
+        return;
+    }
 
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('p', 'mm', 'a4');
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'mm', 'a4');
+
+    // --- CONFIGURACIÓN DE ESTILO ---
+    const primaryColor = [31, 41, 55];    // Gris oscuro (Tailwind gray-800)
+    const accentColor = [75, 85, 99];     // Gris medio (Tailwind gray-600)
+    const highlightColor = [37, 99, 235]; // Azul (Primary-600 aproximado)
+    
+    const margin = 15;
+    const gutter = 8; 
+    const leftColWidth = 60; 
+    const rightColStart = margin + leftColWidth + gutter;
+    const rightColWidth = 210 - margin - rightColStart;
+    
+    let cursorY = 20;
+
+    // --- HELPER: Escribir texto con ajuste de línea ---
+    const writeWrappedText = (text, x, y, maxWidth, fontSize, isBold = false, color = [0,0,0], align = 'left') => {
+        doc.setFontSize(fontSize);
+        doc.setTextColor(...color);
+        doc.setFont("helvetica", isBold ? "bold" : "normal");
         
-        // Crear el contenido HTML del CV
-        const cvContent = document.createElement('div');
-        cvContent.style.width = '190mm';
-        cvContent.style.padding = '15mm';
-        cvContent.style.fontFamily = 'Helvetica, Arial, sans-serif';
-        cvContent.style.fontSize = '12pt';
-        cvContent.style.lineHeight = '1.4';
-        cvContent.style.color = '#333';
-        cvContent.style.backgroundColor = '#ffffff';
+        const lines = doc.splitTextToSize(text, maxWidth);
+        doc.text(lines, x, y, { align: align });
         
-        cvContent.innerHTML = `
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: Helvetica, Arial, sans-serif;
-            }
-            .name {
-                font-size: 22pt;
-                font-weight: bold;
-                margin-bottom: 8px;
-                color: #2c3e50;
-            }
-            .title {
-                font-size: 16pt;
-                font-weight: bold;
-                margin-bottom: 15px;
-                color: #2c3e50;
-            }
-            .section-title {
-                font-size: 14pt;
-                font-weight: bold;
-                color: #2c3e50;
-                border-bottom: 1px solid #ddd;
-                padding-bottom: 4px;
-                margin-top: 15px;
-                margin-bottom: 10px;
-            }
-            .job-title {
-                font-weight: bold;
-                font-size: 12pt;
-                margin-top: 8px;
-                color: #2c3e50;
-            }
-            .company {
-                font-style: italic;
-                margin-top: 3px;
-                font-size: 11pt;
-                color: #555;
-            }
-            .date {
-                color: #666;
-                font-size: 10pt;
-                margin-bottom: 3px;
-            }
-            .skills-category {
-                font-weight: bold;
-                margin-top: 8px;
-                font-size: 11pt;
-            }
-            .skills-list {
-                margin-left: 15px;
-                margin-bottom: 8px;
-                font-size: 10.5pt;
-            }
-            .skill-item {
-                margin-left: 10px;
-                margin-bottom: 3px;
-            }
-            .col2-table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            .col2-table td {
-                width: 50%;
-                vertical-align: top;
-                padding-right: 15px;
-            }
-            .contact-table {
-                width: 100%;
-                margin-bottom: 20px;
-                font-size: 10.5pt;
-            }
-            .contact-table td {
-                padding: 3px 0;
-            }
-            .experience-item {
-                margin-bottom: 15px;
-            }
-            .experience-desc {
-                font-size: 10.5pt;
-                line-height: 1.4;
-                margin-top: 5px;
-            }
-        </style>
+        // Calcular altura: (número de líneas * tamaño de fuente * conversión a mm * interlineado)
+        return lines.length * (fontSize * 0.3527 * 1.3);
+    };
 
-        <div style="margin-bottom: 20px;">
-            <div class="name">José López</div>
-            <div class="title">Ingeniero en Informática</div>
-             
-            <table class="contact-table">
-                <tr>
-                    <td width="50%">Teléfono: +58 414 5883454</td>
-                    <td width="50%">GitHub: github.com/joselm2490</td>
-                </tr>
-                <tr>
-                    <td>Correo Electrónico: joselm2490@gmail.com</td>
-                    <td>LinkedIn: linkedin.com/in/joselm2490</td>
-                </tr>
-                <tr>
-                    <td>Dirección: Palo Negro, Venezuela</td>
-                    <td>Residencia adicional: Caracas - Venezuela</td>
-                </tr>
-            </table>
-        </div>
+    // --- 1. ENCABEZADO ---
+    doc.setFontSize(22);
+    doc.setTextColor(...primaryColor);
+    doc.setFont("helvetica", "bold");
+    doc.text("JOSÉ LÓPEZ", margin, cursorY);
+    
+    cursorY += 7;
+    doc.setFontSize(11);
+    doc.setTextColor(...highlightColor);
+    doc.setFont("helvetica", "bold");
+    doc.text("INGENIERO EN INFORMÁTICA | DESARROLLADOR FULL STACK", margin, cursorY);
 
-        <table class="col2-table">
-            <tr>
-                <td style="padding-right: 20px;">
-                    <div class="section-title">EDUCACIÓN</div>
-                                          
-                    <div class="date">Julio de 2010 - julio de 2025</div>
-                    <div class="job-title">Grado en Ingeniería Informática</div>
-                    <div class="company">Universidad Nacional Experimental Rómulo Gallegos</div>
-                    
-                    <div class="section-title">HABILIDADES</div>
-                    
-                    <div class="skills-category">Backend:</div>
-                    <div class="skills-list">PHP, Laravel, Livewire</div>
-                    
-                    <div class="skills-category">Frontend:</div>
-                    <div class="skills-list">HTML, JavaScript, Tailwind CSS, Bootstrap</div>
-                    
-                    <div class="skills-category">Bases de Datos:</div>
-                    <div class="skills-list">MySQL, SQL Server</div>
-                    
-                    <div class="skills-category">Control de Versiones:</div>
-                    <div class="skill-item">Git</div>
-                    <div class="skill-item">GitHub</div>
-                    
-                    <div class="skills-category">Gestión de Proyectos:</div>
-                    <div class="skill-item">Trello</div>
-                    
-                    <div class="skills-category">Plataformas de Comunicación:</div>
-                    <div class="skill-item">Google Meet</div>
-                    <div class="skill-item">Zoom</div>
-                </td>
-                
-                <td>
-                    <div class="section-title">EXPERIENCIA</div>
-                    
-                    <div class="experience-item">
-                        <div class="date">Mayo de 2025 - julio de 2025</div>
-                        <div class="job-title">Desarrollador</div>
-                        <div class="company">Universidad Nacional Experimental Rómulo Gallegos | Presencial | Venezuela</div>
-                        <div class="experience-desc">
-                            Reingeniería del sistema odontológico universitario con Laravel 12, Livewire 3, Tailwind CSS y MySQL. 
-                            Mejora de atención clínica y evaluación académica. Implementación de protocolos de seguridad, 
-                            automatización de procesos y optimización de la gestión de datos.
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="date">Septiembre de 2022 - junio de 2023</div>
-                        <div class="job-title">Soporte técnico</div>
-                        <div class="company">Tappers | Remoto | Colombia</div>
-                        <div class="experience-desc">
-                            Responsable de la consulta y mantenimiento de bases de datos SQL Server para el sistema interno de la empresa. 
-                            Brindé soporte técnico en PHP, solucionando fallas funcionales y mejorando la estabilidad del sistema.
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="date">Abril de 2021 - junio de 2021</div>
-                        <div class="job-title">Pasante de ingeniería en informática</div>
-                        <div class="company">IVSS Hospital Jose Antonio Vargas | Híbrido | Venezuela</div>
-                        <div class="experience-desc">
-                            Desarrollé un sistema web para control de citas médicas e inventario farmacéutico usando PHP y MySQL. 
-                            Esta experiencia fortaleció mis habilidades en desarrollo backend y gestión de bases de datos.
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        `;
+    cursorY += 6;
+    doc.setFontSize(9);
+    doc.setTextColor(...accentColor);
+    doc.setFont("helvetica", "normal");
+    
+    // Datos de contacto extraídos del HTML
+    const contactLine1 = "Email: joselm2490@gmail.com   |   Tel: +58 414 5883454";
+    const contactLine2 = "LinkedIn: linkedin.com/in/joselm2490   |   Ubicación: Palo Negro, Venezuela";
+    
+    doc.text(contactLine1, margin, cursorY);
+    cursorY += 4.5;
+    doc.text(contactLine2, margin, cursorY);
 
-        // Añadir temporalmente al body
-        document.body.appendChild(cvContent);
+    cursorY += 6;
+    doc.setDrawColor(200, 200, 200);
+    doc.line(margin, cursorY, 210 - margin, cursorY);
+    cursorY += 6;
+
+    const columnStartTop = cursorY;
+
+    // ==========================================
+    // --- 2. COLUMNA IZQUIERDA (Perfil y Skills) ---
+    // ==========================================
+    let leftY = columnStartTop;
+
+    // Títulos de sección
+    const renderSectionTitle = (text, x, y) => {
+        doc.setFontSize(10);
+        doc.setTextColor(...primaryColor);
+        doc.setFont("helvetica", "bold");
+        doc.text(text.toUpperCase(), x, y);
+        doc.setDrawColor(...highlightColor);
+        doc.line(x, y + 1, x + 15, y + 1); // Pequeña línea azul decorativa
+        return 7;
+    };
+
+    // --- PERFIL ---
+    leftY += renderSectionTitle("PERFIL", margin, leftY);
+    const profileText = "Desarrollador Full Stack con experiencia en desarrollo web utilizando Laravel, PHP, Python y Odoo, y gestión de bases de datos (SQL Server, MySQL y PostgreSQL). Comprometido con la resolución de problemas técnicos, capacidad analítica y adaptación a metodologías ágiles.";
+    
+    leftY += writeWrappedText(profileText, margin, leftY, leftColWidth, 8.5, false, [60,60,60]);
+    leftY += 6;
+
+    // --- HABILIDADES ---
+    leftY += renderSectionTitle("HABILIDADES", margin, leftY);
+
+    const renderSkillGroup = (title, items) => {
+        doc.setFontSize(9);
+        doc.setTextColor(...primaryColor);
+        doc.setFont("helvetica", "bold");
+        doc.text(title, margin, leftY);
+        leftY += 4;
         
-        // Configuración de html2canvas para mejor calidad
-        const canvas = await html2canvas(cvContent, {
-            scale: 3, // Aumentar escala para mejor calidad
-            logging: false,
-            useCORS: true,
-            allowTaint: true,
-            letterRendering: true
+        doc.setFontSize(8.5);
+        doc.setTextColor(...accentColor);
+        doc.setFont("helvetica", "normal");
+        const height = writeWrappedText(items, margin, leftY, leftColWidth, 8.5);
+        leftY += height + 3;
+    };
+
+    renderSkillGroup("Backend", "PHP, Laravel, Livewire, Python, Odoo");
+    renderSkillGroup("Frontend", "HTML5, Tailwind CSS, Bootstrap CSS, JavaScript, Next.js");
+    renderSkillGroup("Bases de Datos", "MySQL, SQL Server, PostgreSQL");
+    renderSkillGroup("Control de Versiones", "Git, GitHub, GitLab");
+    renderSkillGroup("Gestión y Com.", "Trello, OpenProject, Google Meet, Zoom");
+    renderSkillGroup("Otros", "Docker, Postman");
+
+    // ==========================================
+    // --- 3. COLUMNA DERECHA (Experiencia) ---
+    // ==========================================
+    let rightY = columnStartTop;
+
+    rightY += renderSectionTitle("EXPERIENCIA PROFESIONAL", rightColStart, rightY);
+
+    // FUNCIÓN EDITADA: Fecha y Ubicación ahora debajo del cargo para evitar sobreposición
+    const renderExperience = (role, company, date, bullets) => {
+        // Cargo
+        doc.setFontSize(10.5);
+        doc.setTextColor(0, 0, 0);
+        doc.setFont("helvetica", "bold");
+        doc.text(role, rightColStart, rightY);
+        rightY += 4.5;
+        
+        // Fecha y Ubicación (Debajo del cargo)
+        doc.setFontSize(8.5);
+        doc.setTextColor(100, 100, 100);
+        doc.setFont("helvetica", "italic");
+        doc.text(date, rightColStart, rightY);
+        rightY += 5;
+
+        // Empresa
+        doc.setFontSize(9.5);
+        doc.setTextColor(...highlightColor); 
+        doc.setFont("helvetica", "bold");
+        doc.text(company, rightColStart, rightY);
+        rightY += 5;
+
+        // Bullets (Lista)
+        doc.setFontSize(9);
+        doc.setTextColor(50, 50, 50);
+        doc.setFont("helvetica", "normal");
+
+        bullets.forEach(bullet => {
+            doc.text("•", rightColStart, rightY);
+            const height = writeWrappedText(bullet, rightColStart + 4, rightY, rightColWidth - 4, 9);
+            rightY += height + 1.5; 
         });
         
-        // Eliminar temporal
-        document.body.removeChild(cvContent);
-        
-        // Ajustar tamaño de imagen para el PDF
-        const imgWidth = 190; // mm
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        
-        // Añadir imagen al PDF con posición centrada
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const x = (pageWidth - imgWidth) / 2;
-        
-        pdf.addImage(canvas, 'PNG', x, 10, imgWidth, imgHeight);
-        
-        // Guardar PDF
-        pdf.save('CV_Jose_Lopez.pdf');
-        
-        console.log('CV generado con éxito');
-    } catch (error) {
-        console.error('Error al generar el CV:', error);
-        alert('Error al generar el CV: ' + error.message);
-    }
-}
+        rightY += 3; 
+    };
+
+    // DATA EXTRAÍDA DEL HTML
+    
+    // 1. Alcaraván
+    renderExperience(
+        "Desarrollador Web",
+        "SISTEMAS TECNOLÓGICOS ALCARAVÁN, S.A",
+        "Ago 2025 - Presente • Venezuela",
+        [
+            "Plataforma 'Güirirí', sistema de gestión tributaria municipal utilizado activamente por diversas alcaldías a nivel nacional.",
+            "Implementación de funcionalidades para la automatización de trámites en línea, optimizando la gestión al contribuyente sobre la infraestructura existente.",
+            "Colaboración con el equipo, utilizando Python, Odoo y Next.js para el soporte y escalabilidad del sistema."
+        ]
+    );
+
+    // 2. UNERG
+    renderExperience(
+        "Desarrollador Web",
+        "UNERG",
+        "May 2025 - Jul 2025 • Venezuela",
+        [
+            "Reingeniería integral del Sistema Clínico Odontológico utilizando PHP y Laravel 12 para optimizar la atención y gestión administrativa.",
+            "Desarrollo de interfaces interactivas con Livewire 3 y Tailwind CSS para la administración de historias clínicas y evaluación académica.",
+            "Gestión de datos con MySQL para proteger la información sensible."
+        ]
+    );
+
+    // 3. TAP SOLUTIONS S.A.S
+    renderExperience(
+        "Consultor BD / Desarrollador Web",
+        "TAP SOLUTIONS S.A.S",
+        "Sep 2022 - Jun 2023 • Colombia (Remoto)",
+        [
+            "Consultoría y administración de bases de datos SQL Server, realizando mantenimiento y optimización de consultas para asegurar la integridad de la información.",
+            "Desarrollo web y soporte técnico especializado en PHP, diagnosticando y resolviendo incidencias para garantizar la continuidad operativa de la plataforma.",
+            "Ejecución de análisis de datos y generación de informes estratégicos para la toma de decisiones empresariales."
+        ]
+    );
+
+    // 4. IVSS
+    renderExperience(
+        "Desarrollador Web (Pasantía)",
+        "IVSS HOSPITAL “JOSÉ ANTONIO VARGAS”",
+        "Abr 2021 - Jun 2021 • Venezuela",
+        [
+            "Desarrollo de un sistema web integral utilizando PHP (Laravel) y MySQL para la automatización de citas médicas, control de inventario en farmacia y gestión de archivos.",
+            "Digitalización de registros manuales vulnerables, migrando la información a una base de datos segura para garantizar la integridad del inventario y los datos de pacientes.",
+            "Optimización de los tiempos de respuesta en la búsqueda de historias médicas y generación reportes automatizados en PDF para la toma de decisiones."
+        ]
+    );
+
+    // Guardar PDF
+    doc.save('CV_Jose_Lopez.pdf');
+};

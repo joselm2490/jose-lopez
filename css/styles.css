@@ -1,0 +1,245 @@
+/* css/styles.css */
+
+/* Estilos de Texto y Títulos */
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #0ea5e9, #0369a1);
+}
+
+.section-title {
+    font-size: 2.75rem;
+    line-height: 1.1;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #0f172a;
+    position: relative;
+    z-index: 10;
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: 3.75rem;
+    }
+}
+
+.dark .section-title {
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(14, 165, 233, 0.4);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 6rem;
+    height: 0.4rem;
+    background-image: linear-gradient(to right, #38bdf8, #0ea5e9);
+    margin: 1.5rem auto 0;
+    border-radius: 99px;
+}
+
+/* Efectos de Cards */
+.experience-card, .social-link, .cv-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.social-link:hover {
+    transform: translateY(-0.25rem);
+    background-color: #e0f2fe;
+    color: #0284c7;
+}
+
+.cv-button:hover {
+    background-color: #0284c7;
+    color: #ffffff;
+    border-color: #0284c7;
+}
+
+/* ==========================================================================
+   CLASE MAESTRA: BOTONES FLOTANTES
+   Diseño compartido para que se vean idénticos (gemelos).
+   ========================================================================== */
+.floating-btn {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    
+    /* Estilo Glass / Gradiente */
+    background-image: linear-gradient(135deg, #0ea5e9, #0284c7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Sombra y Brillo */
+    box-shadow: 0 10px 30px rgba(14, 165, 233, 0.6);
+    backdrop-filter: blur(4px);
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    cursor: pointer;
+}
+
+/* Efecto Hover compartido */
+.floating-btn:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-image: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    box-shadow: 0 15px 35px rgba(14, 165, 233, 0.8);
+}
+
+/* UBICACIÓN 1: Botón TEMA (Arriba a la derecha) */
+.theme-toggle-btn {
+    position: absolute; 
+    top: 2rem;
+    right: 2rem;
+}
+
+/* UBICACIÓN 2: Botón SUBIR (Abajo a la derecha) */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Ajustes para pantallas grandes (Desktop) */
+@media (min-width: 768px) {
+    .theme-toggle-btn {
+        top: 3rem;
+        right: 3rem;
+    }
+    .back-to-top-btn {
+        bottom: 3rem;
+        right: 3rem;
+    }
+}
+
+/* Visibilidad del botón subir */
+.back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top-btn.visible:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* Glow Cards Styles */
+.glow-card {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    --glow-opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.glow-bg {
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(14, 165, 233, 0.15), transparent 40%);
+    opacity: var(--glow-opacity);
+    transition: opacity 0.3s ease;
+}
+
+.glow-border {
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), #0ea5e9, transparent 40%);
+    opacity: var(--glow-opacity);
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2px;
+}
+
+.dark .glow-bg {
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.2), transparent 40%);
+}
+
+.dark .glow-border {
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), #38bdf8, transparent 40%);
+}
+
+/* Substrate Canvas */
+canvas#substrate-canvas {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: auto; transition: opacity 0.5s ease;
+}
+html:not(.dark) canvas#substrate-canvas { opacity: 1; mix-blend-mode: multiply; }
+.dark canvas#substrate-canvas { opacity: 1; mix-blend-mode: screen; }
+
+/* Otros Estilos */
+.console-underscore { display: inline-block; position: relative; font-weight: bold; }
+.console-underscore.hidden { opacity: 0; }
+#text { display: inline-block; }
+
+.font-pixel {
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    -webkit-font-smoothing: none; 
+}
+
+#skill-cloud-container {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    overflow: hidden; display: block; z-index: 10; pointer-events: none;
+}
+
+.skill-bird {
+    position: absolute; left: 100%; white-space: nowrap;
+    font-size: 1.6rem; font-weight: 900; padding: 0.5rem;
+    color: #0f172a; animation: fly-across linear forwards; 
+    text-shadow: 0 0 12px rgba(255,255,255,1); z-index: 10;
+}
+.dark .skill-bird { 
+    color: #ffffff; 
+    text-shadow: 0 0 15px rgba(0,0,0,0.9), 0 0 8px rgba(56, 189, 248, 0.6); 
+}
+
+@keyframes fly-across {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-500%); }
+}
+
+.holo-name {
+    position: relative; display: inline-block;
+    color: transparent; -webkit-text-fill-color: transparent;
+    background-clip: text; -webkit-background-clip: text;
+    background-image: linear-gradient(45deg, #0ea5e9, #7dd3fc, #0284c7);
+    background-size: 200%;
+    animation: plasmaAni 4s ease infinite alternate;
+    font-weight: 900;
+    filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.4));
+}
+.dark .holo-name {
+    background-image: linear-gradient(45deg, #38bdf8, #e0f2fe, #0ea5e9);
+}
+@keyframes plasmaAni {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* CORRECCIÓN DINOSAURIO PIXEL ART */
+.pixel-art {
+    image-rendering: pixelated; 
+    image-rendering: crisp-edges;
+    filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.2)) !important; 
+}
+
+/* Mejora legibilidad párrafos */
+p, li {
+    letter-spacing: 0.015em;
+    line-height: 1.6;
+}
+
+.prose {
+    backdrop-filter: blur(16px) saturate(180%);
+}
