@@ -1,4 +1,47 @@
-// --- SUBSTRATE EFFECT MODULE (FONDO ANIMADO) ---
+// js/main.js
+
+// --- 1. ANIMACIÓN DE TEXTO (TYPEWRITER) "Hola, soy..." ---
+const TextTyper = (() => {
+    const words = [
+        "Ingeniero en Informática",
+        "Desarrollador Web",
+        "Backend Developer",
+        "Full Stack Developer"
+    ];
+    let i = 0;
+    let timer;
+
+    function type(element, text, index = 0) {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            timer = setTimeout(() => type(element, text, index + 1), 100);
+        } else {
+            setTimeout(() => erase(element), 2000);
+        }
+    }
+
+    function erase(element) {
+        const text = element.textContent;
+        if (text.length > 0) {
+            element.textContent = text.substring(0, text.length - 1);
+            timer = setTimeout(() => erase(element), 50);
+        } else {
+            i = (i + 1) % words.length;
+            setTimeout(() => type(element, words[i]), 500);
+        }
+    }
+
+    function init() {
+        const element = document.getElementById('text');
+        if (element) {
+            type(element, words[0]);
+        }
+    }
+
+    return { init };
+})();
+
+// --- 2. SUBSTRATE EFFECT MODULE (FONDO ANIMADO) ---
 const SubstrateEffect = (() => {
     let canvas, context, width, height, dpr;
     let boids = [];
@@ -19,10 +62,10 @@ const SubstrateEffect = (() => {
         this.update = function (data) {
             const isDark = document.documentElement.classList.contains('dark');
             if (isDark) {
-                context.strokeStyle = 'rgba(226, 232, 240, 0.1)';
-                context.lineWidth = 0.8;
+                context.strokeStyle = 'rgba(56, 189, 248, 0.3)';
+                context.lineWidth = 1.2;
             } else {
-                context.strokeStyle = 'rgba(0, 0, 0, 0.08)';
+                context.strokeStyle = 'rgba(0, 0, 0, 0.1)';
                 context.lineWidth = 1.0;
             }
 
@@ -107,11 +150,17 @@ const SubstrateEffect = (() => {
     return { init, start, stop, reset };
 })();
 
-
+// --- 3. INICIALIZACIÓN GENERAL ---
 document.addEventListener('DOMContentLoaded', function () {
+
+    // Iniciar Animación de Texto (Restaurado)
+    TextTyper.init();
+
+    // Iniciar Fondo Substrate
     SubstrateEffect.init();
     SubstrateEffect.start();
 
+    // Gestión del Tema (Dark/Light)
     const themeToggleBtn = document.getElementById('themeToggle');
     const htmlElement = document.documentElement;
 
@@ -120,6 +169,12 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         htmlElement.classList.remove('dark');
     }
+
+    if (typeof updateSVGColors === 'function') {
+        updateSVGColors();
+    }
+
+    // Resetear efecto al cambiar tema
     setTimeout(() => { SubstrateEffect.reset(); }, 50);
 
     if (themeToggleBtn) {
@@ -132,201 +187,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.theme = 'dark';
             }
             SubstrateEffect.reset();
-        });
-    }
-
-    // --- GENERADOR DE BURBUJAS PARA EL FOOTER ---
-    const footerBubbles = document.getElementById('footer-bubbles');
-
-    if (footerBubbles) {
-        for (let i = 0; i < 128; i++) {
-            const bubble = document.createElement('div');
-            bubble.classList.add('bubble');
-            const size = 2 + Math.random() * 4;
-            const distance = 2 + Math.random() * 3;
-            const position = -5 + Math.random() * 110;
-            const time = 2 + Math.random() * 2;
-            const delay = -1 * (2 + Math.random() * 2);
-
-            bubble.style.setProperty('--size', `${size}rem`);
-            bubble.style.setProperty('--distance', `${distance}rem`);
-            bubble.style.setProperty('--position', `${position}%`);
-            bubble.style.setProperty('--time', `${time}s`);
-            bubble.style.setProperty('--delay', `${delay}s`);
-
-            footerBubbles.appendChild(bubble);
-        }
-    }
-
-    // --- DINO SKILLS ARCADE EFFECT ---
-    const SKILLS = [
-        "PHP", "Laravel", "Livewire", "Python", "Odoo",
-        "HTML5", "Tailwind", "Bootstrap", "JavaScript",
-        "Next.js", "MySQL", "SQL Server", "PostgreSQL",
-        "Git", "GitHub", "GitLab", "Trello",
-        "OpenProject", "Google Meet", "Zoom", "Docker", "Postman"
-    ];
-
-    const SKILL_CONTAINER = document.getElementById('skill-cloud-container');
-    let lastLaneIndex = -1;
-
-    function spawnSkillBird() {
-        if (!SKILL_CONTAINER || document.hidden) return;
-
-        const skillName = SKILLS[Math.floor(Math.random() * SKILLS.length)];
-        const bird = document.createElement('div');
-
-        bird.classList.add('skill-bird', 'font-pixel');
-        bird.innerText = skillName;
-
-        // --- SOLUCIÓN: SOLO 2 CARRILES SUPERIORES ---
-        // 5% y 20% para asegurar que pasan MUY arriba del Dino gigante
-        const lanes = [5, 20];
-
-        let laneIndex;
-        // Alternar carriles para evitar colisiones
-        do {
-            laneIndex = Math.floor(Math.random() * lanes.length);
-        } while (laneIndex === lastLaneIndex && lanes.length > 1);
-
-        lastLaneIndex = laneIndex;
-
-        bird.style.top = `${lanes[laneIndex]}%`;
-
-        // --- SOLUCIÓN SUPERPOSICIÓN: VELOCIDAD CONSTANTE ---
-        // Al usar un tiempo fijo (8s), las palabras nunca se alcanzan entre sí.
-        bird.style.animationDuration = `8s`;
-
-        SKILL_CONTAINER.appendChild(bird);
-
-        setTimeout(() => {
-            bird.remove();
-        }, 8000); // Coincide con la duración
-    }
-
-    function startSkillRotation() {
-        spawnSkillBird();
-
-        const loop = () => {
-            // Intervalo de aparición fijo y suficiente para dar espacio
-            const timeNext = 2500;
-            setTimeout(() => {
-                spawnSkillBird();
-                loop();
-            }, timeNext);
-        };
-        loop();
-    }
-
-    // --- TERMINAL TEXT EFFECT ---
-    const consoleElement = document.getElementById('text');
-    if (consoleElement) {
-        const words = ['Ingeniero en Informática', 'Desarrollador Full Stack', 'Desarrollador Web'];
-        const colors = ['#0284c7', '#0ea5e9', '#38bdf8'];
-
-        consoleText(words, 'text', colors);
-    }
-
-    function consoleText(words, id, colors) {
-        if (colors === undefined) colors = ['#fff'];
-        var visible = true;
-        var con = document.getElementById('console');
-        var letterCount = 1;
-        var x = 1;
-        var waiting = false;
-        var target = document.getElementById(id);
-
-        target.setAttribute('style', 'color:' + colors[0]);
-
-        window.setInterval(function () {
-            if (letterCount === 0 && waiting === false) {
-                waiting = true;
-                target.innerHTML = words[0].substring(0, letterCount);
-                window.setTimeout(function () {
-                    var usedColor = colors.shift();
-                    colors.push(usedColor);
-                    var usedWord = words.shift();
-                    words.push(usedWord);
-                    x = 1;
-                    target.setAttribute('style', 'color:' + colors[0]);
-                    letterCount += x;
-                    waiting = false;
-                }, 1000);
-            } else if (letterCount === words[0].length + 1 && waiting === false) {
-                waiting = true;
-                window.setTimeout(function () {
-                    x = -1;
-                    letterCount += x;
-                    waiting = false;
-                }, 1000);
-            } else if (waiting === false) {
-                target.innerHTML = words[0].substring(0, letterCount);
-                letterCount += x;
+            if (typeof updateSVGColors === 'function') {
+                updateSVGColors();
             }
-        }, 120);
-
-        window.setInterval(function () {
-            if (visible === true) {
-                con.className = 'console-underscore hidden';
-                visible = false;
-            } else {
-                con.className = 'console-underscore';
-                visible = true;
-            }
-        }, 400);
-    }
-
-    // --- SCROLL HELPERS ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
-    const backToTopButton = document.getElementById('backToTop');
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) backToTopButton.classList.add('visible');
-            else backToTopButton.classList.remove('visible');
-        });
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
+    // --- SCROLL REVEAL OBSERVER ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in');
+                if (entry.target.classList.contains('reveal-on-scroll')) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.add('animate-fade-in');
+                }
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, {
+        threshold: 0.05, // More lenient for mobile
+        rootMargin: "0px 0px -20px 0px" // Less aggressive bottom margin
+    });
 
-    document.querySelectorAll('.experience-card, .section-title, .about-content').forEach(element => {
+    document.querySelectorAll('.experience-card, .section-title, .about-content, .reveal-on-scroll').forEach(element => {
         observer.observe(element);
     });
 
-    // --- TILT & GLOW ---
-    VanillaTilt.init(document.querySelectorAll(".js-tilt"), {
-        max: 2, speed: 800, glare: true, "max-glare": 0.05, scale: 1.00, gyroscope: false
-    });
-
-    const glowCards = document.querySelectorAll('.glow-card');
-    glowCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-            card.style.setProperty('--glow-opacity', '1');
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.setProperty('--glow-opacity', '0');
-        });
+    // --- TILT & GLOW (Para tarjetas normales) ---
+    VanillaTilt.init(document.querySelectorAll(".info-card, .contact-card"), {
+        max: 3,
+        speed: 1000,
+        glare: true,
+        "max-glare": 0.1,
+        scale: 1.02,
+        gyroscope: true
     });
 
     // --- LOAD FADE-IN ---
@@ -335,11 +230,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.transition = 'opacity 0.5s ease';
         setTimeout(() => {
             document.body.style.opacity = '1';
-            startSkillRotation();
         }, 100);
     });
 
-    // --- CONTACT FORM HANDLER (FORMSPREE) ---
+    // --- CONTACT FORM HANDLER ---
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
@@ -347,12 +241,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (contactForm) {
         contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-
-            // Estado de carga
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span>Enviando...</span>';
-            formStatus.classList.add('hidden');
+            if (formStatus) formStatus.classList.add('hidden');
 
             const formData = new FormData(contactForm);
 
@@ -360,38 +252,39 @@ document.addEventListener('DOMContentLoaded', function () {
                 const response = await fetch(contactForm.action, {
                     method: contactForm.method,
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
-                    formStatus.className = "col-span-1 md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 animate-fade-in";
-                    formStatus.innerHTML = "¡Gracias! Tu mensaje ha sido enviado correctamente.";
+                    if (formStatus) {
+                        formStatus.className = "col-span-1 md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 animate-fade-in";
+                        formStatus.innerHTML = "¡Gracias! Tu mensaje ha sido enviado correctamente.";
+                    }
                     contactForm.reset();
                 } else {
                     throw new Error('Error en el envío');
                 }
             } catch (error) {
-                formStatus.className = "col-span-1 md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 animate-fade-in";
-                formStatus.innerHTML = "Hubo un problema al enviar el mensaje. Por favor, intenta nuevamente.";
+                if (formStatus) {
+                    formStatus.className = "col-span-1 md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 animate-fade-in";
+                    formStatus.innerHTML = "Hubo un problema al enviar el mensaje. Por favor, intenta nuevamente.";
+                }
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
-                formStatus.classList.remove('hidden');
+                if (formStatus) formStatus.classList.remove('hidden');
             }
         });
     }
 });
 
-// --- FUNCIÓN GLOBAL PARA COPIAR EMAIL ---
+// Función global para copiar email
 window.copyEmail = function (e) {
     e.preventDefault();
     const email = "joselm2490@gmail.com";
     navigator.clipboard.writeText(email).then(() => {
         alert("¡Correo copiado al portapapeles!\n" + email);
     }).catch(err => {
-        console.error('Error al copiar: ', err);
         window.location.href = "mailto:" + email;
     });
 };

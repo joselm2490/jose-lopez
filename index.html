@@ -98,69 +98,274 @@
         <div class="max-w-7xl mx-auto w-full">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
 
-                <div class="lg:w-1/2 text-center lg:text-left animate-fade-in relative z-10">
-                    <div
-                        class="inline-block px-4 py-1.5 mb-4 rounded-full bg-primary-5 dark:bg-primary-900/30 border border-primary-100 dark:border-primary-700/50">
-                        <span
-                            class="text-sm font-semibold text-primary-600 dark:text-primary-400 tracking-wide uppercase">Transformando
-                            ideas en código</span>
+                <div class="lg:w-1/2 text-center lg:text-left reveal-on-scroll relative z-10">
+                    <div class="badge-futuristic mb-6">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 10V3L4 14H11V21L20 10H13Z" />
+                        </svg>
+                        <span>Transformando ideas en código</span>
                     </div>
 
-                    <h1
-                        class="text-5xl sm:text-6xl md:text-7xl font-bold text-dark-800 dark:text-white mb-6 leading-tight tracking-tight">
-                        Hola, soy <br class="hidden lg:block">
-                        <span class="holo-name">José López</span>
-                    </h1>
-
-                    <div class="h-16 flex items-center justify-center lg:justify-start mb-6">
-                        <span id="text"
-                            class="text-xl md:text-2xl font-semibold text-dark-700 dark:text-gray-100 drop-shadow-sm font-mono tracking-tight"></span>
-                        <div class="console-underscore text-xl md:text-2xl font-bold text-primary-500 ml-1"
-                            id="console">&#95;</div>
+                    <div class="flex flex-col items-center lg:items-start mb-6">
+                        <div
+                            class="text-5xl sm:text-6xl md:text-7xl font-bold text-dark-800 dark:text-white leading-tight tracking-tight">
+                            <div>Hola, soy</div>
+                        </div>
+                        <div class="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tight mt-2 mb-4">
+                            <span class="holo-name hero-highlight">José López</span>
+                        </div>
+                        <div class="h-12 flex items-center justify-center lg:justify-start">
+                            <span id="text" class="title text-xl md:text-3xl normal-case tracking-normal"
+                                style="min-height: 1.5em; border-right: none;"></span>
+                            <span class="text-xl md:text-3xl font-bold text-primary-500 ml-1 animate-pulse">_</span>
+                        </div>
                     </div>
 
                     <p
-                        class="text-base text-dark-600 dark:text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
+                        class="text-base text-dark-600 dark:text-gray-100 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
                         Laravel | PHP | Python | Odoo | Next.js | Base de Datos (SQL Server, MySQL y PostgreSQL) | HTML
                         | JavaScript
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#" onclick="generateCV()"
-                            class="group relative px-8 py-3.5 bg-dark-800 dark:bg-white text-white dark:text-dark-900 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                            <span class="relative z-10 flex items-center justify-center w-full">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
-                                </svg>
-                                Descargar CV
-                            </span>
+                        <a href="#" onclick="generateCV()" class="btn-futuristic primary cv">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                            </svg>
+                            <span>Descargar CV</span>
                         </a>
-                        <a href="#experience"
-                            class="px-8 py-3.5 bg-white/50 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 text-dark-700 dark:text-white font-medium rounded-xl hover:bg-white dark:hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 text-center">
-                            Ver experiencia
+                        <a href="#experience" class="btn-futuristic">
+                            <span>Ver experiencia</span>
                         </a>
                     </div>
                 </div>
 
-                <div class="w-full lg:w-1/2 flex flex-col items-center justify-center relative mt-12 lg:mt-0 px-4 z-20">
-                    <div class="relative w-full max-w-[300px] sm:max-w-md lg:max-w-lg h-64 sm:h-80 lg:h-96 overflow-hidden mx-auto"
-                        style="-webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
+                <div class="w-full lg:w-1/2 flex items-center justify-center relative mt-12 lg:mt-0">
+                    <div class="relative w-full max-w-2xl h-[500px] flex items-center justify-center">
+                        <!-- Abstract Web Dev Illustration -->
+                        <svg viewBox="0 0 500 500" class="w-full h-full hero-illustration"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <!-- Enhanced Gradients and Filters -->
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:0.4" />
+                                    <stop offset="50%" style="stop-color:#38bdf8;stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:#0284c7;stop-opacity:0.5" />
+                                </linearGradient>
+                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#7dd3fc;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.9" />
+                                </linearGradient>
+                                <linearGradient id="holoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#22d3ee">
+                                        <animate attributeName="stop-color" values="#22d3ee; #818cf8; #22d3ee" dur="4s"
+                                            repeatCount="indefinite" />
+                                    </stop>
+                                    <stop offset="50%" stop-color="#818cf8">
+                                        <animate attributeName="stop-color" values="#818cf8; #38bdf8; #818cf8" dur="4s"
+                                            repeatCount="indefinite" />
+                                    </stop>
+                                    <stop offset="100%" stop-color="#38bdf8">
+                                        <animate attributeName="stop-color" values="#38bdf8; #22d3ee; #38bdf8" dur="4s"
+                                            repeatCount="indefinite" />
+                                    </stop>
+                                </linearGradient>
+                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <filter id="soft-white-glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur" />
+                                    <feFlood flood-color="white" flood-opacity="1" result="flood" />
+                                    <feComposite in="flood" in2="blur" operator="in" result="coloredBlur" />
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                                <filter id="glow-strong">
+                                    <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
 
-                        <div id="skill-cloud-container" class="absolute inset-0 w-full h-full z-10 opacity-70"></div>
+                            <!-- Multi-layer Animated Background -->
+                            <circle cx="250" cy="250" r="180" fill="url(#holoGradient)" opacity="0.25">
+                                <animate attributeName="r" values="180;200;180" dur="6s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.25;0.35;0.25" dur="6s"
+                                    repeatCount="indefinite" />
+                            </circle>
+                            <circle cx="250" cy="250" r="140" fill="url(#holoGradient)" opacity="0.2">
+                                <animate attributeName="r" values="140;160;140" dur="5s" repeatCount="indefinite" />
+                            </circle>
+                            <circle cx="250" cy="250" r="100" fill="url(#holoGradient)" opacity="0.15">
+                                <animate attributeName="r" values="100;115;100" dur="4s" repeatCount="indefinite" />
+                            </circle>
 
-                        <div class="absolute inset-0 flex items-end justify-center z-20 pb-2">
-                            <div
-                                class="absolute bottom-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary-500/20 rounded-full blur-2xl dark:bg-primary-400/10 pointer-events-none">
-                            </div>
-                            <div
-                                class="relative z-30 transition-transform duration-300 hover:scale-105 will-change-transform">
-                                <img src="img/dino-white.gif" alt="dino Illustration"
-                                    class="dino-img dark:hidden w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-contain pixel-art">
-                                <img src="img/dino-black.gif" alt="dino Illustration"
-                                    class="dino-img hidden dark:block w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-contain pixel-art">
-                            </div>
-                        </div>
+                            <!-- Main Code Window Group -->
+                            <g>
+                                <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0"
+                                    dur="6s" repeatCount="indefinite" />
+
+                                <rect id="codeWindowBg" x="100" y="120" width="300" height="220" rx="16" fill="#1e293b"
+                                    opacity="0.95" filter="url(#glow)" />
+
+                                <!-- Window Header (Top Rounded Only) -->
+                                <path
+                                    d="M 116 120 H 384 A 16 16 0 0 1 400 136 V 155 H 100 V 136 A 16 16 0 0 1 116 120 Z"
+                                    fill="url(#grad3)" opacity="0.9" />
+                                <circle cx="125" cy="137.5" r="5" fill="#ef4444" />
+                                <circle cx="145" cy="137.5" r="5" fill="#fbbf24" />
+                                <circle cx="165" cy="137.5" r="5" fill="#22c55e" />
+
+                                <!-- Code Lines -->
+                                <line x1="120" y1="180" x2="250" y2="180" stroke="#0c4a6e" stroke-width="4" opacity="1"
+                                    stroke-linecap="round">
+                                    <animate attributeName="x2" values="250;280;250" dur="3s"
+                                        repeatCount="indefinite" />
+                                </line>
+                                <line x1="120" y1="205" x2="220" y2="205" stroke="#075985" stroke-width="4" opacity="1"
+                                    stroke-linecap="round">
+                                    <animate attributeName="x2" values="220;250;220" dur="4s"
+                                        repeatCount="indefinite" />
+                                </line>
+                                <line x1="120" y1="230" x2="300" y2="230" stroke="#0c4a6e" stroke-width="4" opacity="1"
+                                    stroke-linecap="round">
+                                    <animate attributeName="x2" values="300;330;300" dur="3.5s"
+                                        repeatCount="indefinite" />
+                                </line>
+                                <line x1="120" y1="255" x2="200" y2="255" stroke="#075985" stroke-width="4" opacity="1"
+                                    stroke-linecap="round">
+                                    <animate attributeName="x2" values="200;230;200" dur="4.5s"
+                                        repeatCount="indefinite" />
+                                </line>
+                                <line x1="120" y1="280" x2="270" y2="280" stroke="#0c4a6e" stroke-width="4" opacity="1"
+                                    stroke-linecap="round">
+                                    <animate attributeName="x2" values="270;300;270" dur="3.2s"
+                                        repeatCount="indefinite" />
+                                </line>
+                                <line x1="120" y1="305" x2="240" y2="305" stroke="#0369a1" stroke-width="4" opacity="1"
+                                    stroke-linecap="round">
+                                    <animate attributeName="x2" values="240;270;240" dur="3.8s"
+                                        repeatCount="indefinite" />
+                                </line>
+
+                                <!-- Terminal Cursor -->
+                                <rect x="310" y="275" width="10" height="22" fill="#22c55e" opacity="0.95"
+                                    filter="url(#glow-strong)">
+                                    <animate attributeName="opacity" values="0.95;0;0.95" dur="0.8s"
+                                        repeatCount="indefinite" />
+                                </rect>
+                            </g>
+
+                            <!-- Floating Code Symbols - Enhanced -->
+                            <text x="40" y="90" font-size="42" fill="#ffffff" opacity="1" font-family="monospace"
+                                font-weight="bold" filter="url(#soft-white-glow)" class="stay-white">&lt;/&gt;
+                                <animate attributeName="y" values="90;75;90" dur="5s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="5s" repeatCount="indefinite" />
+                            </text>
+
+                            <text x="410" y="160" font-size="36" fill="#ffffff" opacity="1" font-family="monospace"
+                                font-weight="bold" filter="url(#soft-white-glow)" class="stay-white">{ }
+                                <animate attributeName="y" values="160;145;160" dur="6s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="6s" repeatCount="indefinite" />
+                            </text>
+
+                            <text x="420" y="350" font-size="32" fill="#ffffff" opacity="1" font-family="monospace"
+                                font-weight="bold" filter="url(#soft-white-glow)" class="stay-white">( )
+                                <animate attributeName="y" values="350;335;350" dur="5.5s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="5.5s"
+                                    repeatCount="indefinite" />
+                            </text>
+
+                            <text x="30" y="380" font-size="38" fill="#ffffff" opacity="1" font-family="monospace"
+                                font-weight="bold" filter="url(#soft-white-glow)" class="stay-white">[ ]
+                                <animate attributeName="y" values="380;365;380" dur="4.8s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="4.8s"
+                                    repeatCount="indefinite" />
+                            </text>
+
+                            <text x="60" y="450" font-size="34" fill="#ffffff" opacity="1" font-family="monospace"
+                                font-weight="bold" filter="url(#soft-white-glow)" class="stay-white">=&gt;
+                                <animate attributeName="x" values="60;70;60" dur="4s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="4s" repeatCount="indefinite" />
+                            </text>
+
+                            <text x="410" y="430" font-size="28" fill="#ffffff" opacity="1" font-family="monospace"
+                                font-weight="bold" filter="url(#soft-white-glow)" class="stay-white">//
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="3.5s"
+                                    repeatCount="indefinite" />
+                            </text>
+
+                            <!-- Geometric Shapes - Enhanced -->
+                            <circle cx="410" cy="400" r="25" fill="none" stroke="#ffffff" stroke-width="4" opacity="1"
+                                filter="url(#soft-white-glow)" class="stay-white">
+                                <animate attributeName="r" values="25;32;25" dur="4s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="4s" repeatCount="indefinite" />
+                            </circle>
+
+                            <circle cx="70" cy="200" r="18" fill="none" stroke="#ffffff" stroke-width="3" opacity="1"
+                                filter="url(#soft-white-glow)" class="stay-white">
+                                <animate attributeName="r" values="18;24;18" dur="5s" repeatCount="indefinite" />
+                            </circle>
+
+                            <rect x="30" y="320" width="40" height="40" fill="none" stroke="#ffffff" stroke-width="4"
+                                opacity="0.9" transform="rotate(20 50 340)" filter="url(#soft-white-glow)"
+                                class="stay-white">
+                                <animateTransform attributeName="transform" type="rotate"
+                                    values="20 50 340;35 50 340;20 50 340" dur="7s" repeatCount="indefinite" />
+                            </rect>
+
+                            <polygon points="430,90 450,110 430,130 410,110" fill="none" stroke="#ffffff"
+                                stroke-width="3" opacity="0.9" class="stay-white">
+                                <animateTransform attributeName="transform" type="rotate" values="0 430 110;360 430 110"
+                                    dur="20s" repeatCount="indefinite" />
+                            </polygon>
+
+                            </g>
+
+                            <!-- Particle Effects (Always on Top Layer) -->
+                            <circle cx="150" cy="100" r="3" fill="#ffffff" opacity="1" filter="url(#soft-white-glow)"
+                                class="stay-white">
+                                <animate attributeName="cy" values="100;60;100" dur="5s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="5s"
+                                    repeatCount="indefinite" />
+                            </circle>
+                            <circle cx="350" cy="380" r="2.5" fill="#ffffff" opacity="1" filter="url(#soft-white-glow)"
+                                class="stay-white">
+                                <animate attributeName="cy" values="380;340;380" dur="6s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="6s"
+                                    repeatCount="indefinite" />
+                            </circle>
+                            <circle cx="200" cy="90" r="2" fill="#ffffff" opacity="1" filter="url(#soft-white-glow)"
+                                class="stay-white">
+                                <animate attributeName="cy" values="90;50;90" dur="4.5s" repeatCount="indefinite" />
+                            </circle>
+
+                            <!-- Additional Visual Elements -->
+                            <path d="M 420 250 Q 440 270 420 290" fill="none" stroke="#ffffff" stroke-width="2.5"
+                                opacity="0.8" filter="url(#soft-white-glow)" class="stay-white">
+                                <animate attributeName="opacity" values="0.6;0.9;0.6" dur="4s"
+                                    repeatCount="indefinite" />
+                            </path>
+
+                            <path d="M 80 250 Q 60 270 80 290" fill="none" stroke="#ffffff" stroke-width="2.5"
+                                opacity="0.8" filter="url(#soft-white-glow)" class="stay-white">
+                                <animate attributeName="opacity" values="0.6;0.9;0.6" dur="5s"
+                                    repeatCount="indefinite" />
+                            </path>
+                        </svg>
                     </div>
                 </div>
 
@@ -174,68 +379,66 @@
 
             <div class="flex flex-col lg:flex-row gap-8 items-stretch">
                 <div class="w-full lg:w-1/3">
-                    <div class="js-tilt glow-card relative p-8 rounded-3xl bg-transparent backdrop-blur-md border border-gray-200/10 dark:border-white/10 flex flex-col items-center justify-center h-full isolate overflow-hidden"
-                        style="transform-style: preserve-3d">
-                        <div class="glow-border absolute inset-0 -z-10 rounded-3xl"></div>
+                    <div class="plugin-card futuristic relative flex flex-col items-center justify-center h-full">
 
-                        <div style="transform: translateZ(50px)" class="relative mb-6">
-                            <div class="relative group">
-                                <div
-                                    class="absolute -inset-4 bg-gradient-to-r from-primary-600 to-blue-400 rounded-full opacity-40 blur-2xl group-hover:opacity-70 transition duration-500">
-                                </div>
+
+                        <div class="relative mb-6">
+                            <div class="avatar-halo group">
                                 <img src="img/profile-pic.jpg" alt="José López"
-                                    class="relative w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-white dark:border-dark-800 shadow-2xl">
+                                    class="relative w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-white dark:border-dark-800 shadow-2xl z-10">
                             </div>
                         </div>
 
-                        <div style="transform: translateZ(30px)" class="text-center">
-                            <h3 class="text-2xl font-bold text-dark-800 dark:text-white">José López</h3>
-                            <p class="text-primary-600 dark:text-primary-400 font-medium mb-6">Ingeniero en Informática
+                        <div class="text-center relative z-10 transition-transform duration-500 group-hover:scale-105">
+                            <h3 class="text-3xl font-black text-dark-900 dark:text-white mb-1">José López</h3>
+                            <p
+                                class="text-primary-600 dark:text-primary-400 font-black uppercase tracking-[0.2em] text-xs mb-8">
+                                Ingeniero en Informática
                             </p>
 
-                            <div class="flex flex-wrap gap-3 justify-center">
-                                <a href="https://github.com/joselm2490" target="_blank"
-                                    class="p-3 bg-white/50 dark:bg-dark-900/50 rounded-xl border border-gray-200 dark:border-white/10 hover:text-primary-500 transition-all hover:-translate-y-1">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <div class="flex flex-wrap gap-4 justify-center">
+                                <a href="https://github.com/joselm2490" target="_blank" class="social-mini github"
+                                    title="GitHub">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                     </svg>
                                 </a>
                                 <a href="https://linkedin.com/in/joselm2490" target="_blank"
-                                    class="p-3 bg-white/50 dark:bg-dark-900/50 rounded-xl border border-gray-200 dark:border-white/10 hover:text-blue-600 transition-all hover:-translate-y-1">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    class="social-mini linkedin" title="LinkedIn">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                                     </svg>
                                 </a>
                                 <a href="#contact" title="Envíame un mensaje" aria-label="Envíame un mensaje"
-                                    class="p-3 bg-white/50 dark:bg-dark-900/50 rounded-xl border border-gray-200 dark:border-white/10 hover:text-red-500 hover:-translate-y-1 transition-all shadow-md">
+                                    class="social-mini email">
                                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                                     </svg>
                                 </a>
-                                <!-- <a href="https://wa.me/584145883454" target="_blank" class="p-3 bg-white/50 dark:bg-dark-900/50 rounded-xl border border-gray-200 dark:border-white/10 hover:text-green-500 transition-all hover:-translate-y-1">
+                            </div> <!-- <a href="https://wa.me/584145883454" target="_blank" class="p-3 bg-white/50 dark:bg-dark-900/50 rounded-xl border border-gray-200 dark:border-white/10 hover:text-green-500 transition-all hover:-translate-y-1">
                                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335 .157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                                 </a> -->
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="w-full lg:w-2/3">
-                    <div class="js-tilt glow-card relative p-8 md:p-10 rounded-3xl bg-transparent backdrop-blur-md border border-gray-200/10 dark:border-white/10 h-full overflow-hidden"
-                        style="transform-style: preserve-3d">
-                        <div class="glow-border absolute inset-0 -z-10 rounded-3xl"></div>
+                    <div class="plugin-card futuristic relative h-full">
+
                         <div
                             class="prose lg:prose-lg max-w-none text-dark-600 dark:text-gray-300 relative z-10 flex flex-col justify-center h-full">
+                            <div class="title typewriter-effect text-2xl font-black text-primary-600 dark:text-primary-400 mb-6"
+                                style="--char-count: 24;">Desarrollador
+                                Full Stack</div>
                             <p class="mb-6 leading-relaxed">
-                                <span
-                                    class="text-primary-600 dark:text-primary-400 font-bold text-xl block mb-2 decoration-primary-500/30">Desarrollador
-                                    Full Stack</span>
-                                Especializado en el desarrollo de soluciones web robustas con <strong>Laravel, PHP,
+                                Especializado en el desarrollo de soluciones web robustas con <strong
+                                    class="text-primary-600 dark:text-primary-400 font-bold">Laravel, PHP,
                                     Python y Odoo</strong>. Mi trayectoria se centra en la creación de arquitecturas
-                                eficientes y la gestión avanzada de bases de datos como <strong>SQL Server, MySQL y
+                                eficientes y la gestión avanzada de bases de datos como <strong
+                                    class="text-primary-600 dark:text-primary-400 font-bold">SQL Server, MySQL y
                                     PostgreSQL</strong>, integrando siempre las mejores prácticas del sector.
                             </p>
                             <p class="leading-relaxed">
@@ -250,226 +453,164 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-                <div class="js-tilt glow-card group relative p-6 bg-transparent backdrop-blur-md rounded-2xl border border-gray-200/10 dark:border-white/10 isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-2xl"></div>
-                    <div style="transform: translateZ(20px)">
-                        <h3
-                            class="font-bold text-xl text-primary-400 mb-6 flex items-center gap-2 border-b border-white/10 pb-3 uppercase tracking-wider">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01">
-                                </path>
-                            </svg>
-                            Backend
-                        </h3>
-                        <div class="grid grid-cols-1 gap-y-4">
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/PHP-logo.svg" alt="PHP"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">PHP</span>
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header">
+                            <div class="icon-container mb-3">
+                                <svg class="logo-svg text-primary-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01">
+                                    </path>
+                                </svg>
                             </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/Laravel.svg" alt="Laravel"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">Laravel</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/python.png" alt="Python"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">Python</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/odoo.png" alt="Odoo"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">Odoo</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/livewire.png" alt="Livewire"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">Livewire</span>
+                            <div class="title typewriter-effect" style="--char-count: 7;">Backend</div>
+                            <div class="description-grid mt-4">
+                                <div class="skill-item"><img src="img/logos/PHP-logo.svg" alt="PHP"> <span>PHP</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/Laravel.svg" alt="Laravel">
+                                    <span>Laravel</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/python.png" alt="Python">
+                                    <span>Python</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/odoo.png" alt="Odoo"> <span>Odoo</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/livewire.png" alt="Livewire">
+                                    <span>Livewire</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="js-tilt glow-card group relative p-6 bg-transparent backdrop-blur-md rounded-2xl border border-gray-200/10 dark:border-white/10 isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-2xl"></div>
-                    <div style="transform: translateZ(20px)">
-                        <h3
-                            class="font-bold text-xl text-primary-400 mb-6 flex items-center gap-2 border-b border-white/10 pb-3 uppercase tracking-wider">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                            Frontend
-                        </h3>
-                        <div class="grid grid-cols-1 gap-y-4">
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/Tailwind.svg" alt="Tailwind"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">Tailwind
-                                    CSS</span>
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header">
+                            <div class="icon-container mb-3">
+                                <svg class="logo-svg text-primary-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
                             </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/JavaScript.png" alt="JS"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span
-                                    class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">JavaScript</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/nextjs.png" alt="Next.js"
-                                    class="h-7 w-7 bg-white rounded-full p-0.5 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">Next.js</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/html.svg" alt="HTML5"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">HTML5</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/Bootstrap.png" alt="Bootstrap"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span
-                                    class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">Bootstrap</span>
+                            <div class="title typewriter-effect" style="--char-count: 8;">Frontend</div>
+                            <div class="description-grid mt-4">
+                                <div class="skill-item"><img src="img/logos/Tailwind.svg" alt="Tailwind CSS">
+                                    <span>Tailwind CSS</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/JavaScript.png" alt="JavaScript">
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/nextjs.png" alt="Next.js"
+                                        style="background: white; border-radius: 50%;"> <span>Next.js</span></div>
+                                <div class="skill-item"><img src="img/logos/html.svg" alt="HTML5"> <span>HTML5</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/Bootstrap.png" alt="Bootstrap">
+                                    <span>Bootstrap</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="js-tilt glow-card group relative p-6 bg-transparent backdrop-blur-md rounded-2xl border border-gray-200/10 dark:border-white/10 isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-2xl"></div>
-                    <div style="transform: translateZ(20px)">
-                        <h3
-                            class="font-bold text-xl text-primary-400 mb-6 flex items-center gap-2 border-b border-white/10 pb-3 uppercase tracking-wider">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
-                                </path>
-                            </svg>
-                            Bases de Datos
-                        </h3>
-                        <div class="grid grid-cols-1 gap-y-4">
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/mysql.png" alt="MySQL"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">MySQL</span>
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header">
+                            <div class="icon-container mb-3">
+                                <svg class="logo-svg text-primary-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
+                                    </path>
+                                </svg>
                             </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/postgreSQL.png" alt="PostgreSQL"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span
-                                    class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">PostgreSQL</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/sql-server.png" alt="SQL Server"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-200">SQL
-                                    Server</span>
+                            <div class="title typewriter-effect" style="--char-count: 14;">Bases de Datos</div>
+                            <div class="description-grid mt-4">
+                                <div class="skill-item"><img src="img/logos/mysql.png" alt="MySQL"> <span>MySQL</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/postgreSQL.png" alt="PostgreSQL">
+                                    <span>PostgreSQL</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/sql-server.png" alt="SQL Server"> <span>SQL
+                                        Server</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="js-tilt glow-card group relative p-6 bg-transparent backdrop-blur-md rounded-2xl border border-gray-200/10 dark:border-white/10 isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-2xl"></div>
-                    <div style="transform: translateZ(20px)">
-                        <h3
-                            class="font-bold text-xl text-primary-400 mb-6 flex items-center gap-2 border-b border-white/10 pb-3 uppercase tracking-wider">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
-                                </path>
-                            </svg>
-                            Versiones
-                        </h3>
-                        <div class="grid grid-cols-1 gap-y-4">
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/git.png" alt="Git"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">Git</span>
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header">
+                            <div class="icon-container mb-3">
+                                <svg class="logo-svg text-primary-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                                    </path>
+                                </svg>
                             </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/github.png" alt="GitHub"
-                                    class="h-7 w-7 object-contain bg-white rounded-full p-0.5 group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">GitHub</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/gitlab.png" alt="GitLab"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">GitLab</span>
+                            <div class="title typewriter-effect" style="--char-count: 9;">Versiones</div>
+                            <div class="description-grid mt-4">
+                                <div class="skill-item"><img src="img/logos/git.png" alt="Git"> <span>Git</span></div>
+                                <div class="skill-item"><img src="img/logos/github.png" alt="GitHub"
+                                        style="background: white; border-radius: 50%;"> <span>GitHub</span></div>
+                                <div class="skill-item"><img src="img/logos/gitlab.png" alt="GitLab">
+                                    <span>GitLab</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="js-tilt glow-card group relative p-6 bg-transparent backdrop-blur-md rounded-2xl border border-gray-200/10 dark:border-white/10 isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-2xl"></div>
-                    <div style="transform: translateZ(20px)">
-                        <h3
-                            class="font-bold text-xl text-primary-400 mb-6 flex items-center gap-2 border-b border-white/10 pb-3 uppercase tracking-wider">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                                </path>
-                            </svg>
-                            Gestión
-                        </h3>
-                        <div class="grid grid-cols-1 gap-y-4">
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/trello.png" alt="Trello"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">Trello</span>
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header">
+                            <div class="icon-container mb-3">
+                                <svg class="logo-svg text-primary-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
                             </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/OpenProject.png" alt="OpenProject"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span
-                                    class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">OpenProject</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/meet.svg" alt="Meet"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">Google
-                                    Meet</span>
-                            </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/zoom.png" alt="Zoom"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">Zoom</span>
+                            <div class="title typewriter-effect" style="--char-count: 7;">Gestión</div>
+                            <div class="description-grid mt-4">
+                                <div class="skill-item"><img src="img/logos/trello.png" alt="Trello">
+                                    <span>Trello</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/OpenProject.png" alt="OpenProject">
+                                    <span>OpenProject</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/meet.svg" alt="Google Meet"> <span>Google
+                                        Meet</span></div>
+                                <div class="skill-item"><img src="img/logos/zoom.png" alt="Zoom"> <span>Zoom</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="js-tilt glow-card group relative p-6 bg-transparent backdrop-blur-md rounded-2xl border border-gray-200/10 dark:border-white/10 isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-2xl"></div>
-                    <div style="transform: translateZ(20px)">
-                        <h3
-                            class="font-bold text-xl text-primary-400 mb-6 flex items-center gap-2 border-b border-white/10 pb-3 uppercase tracking-wider">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
-                                </path>
-                            </svg>
-                            Herramientas
-                        </h3>
-                        <div class="grid grid-cols-1 gap-y-4">
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/docker.png" alt="Docker"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">Docker</span>
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header">
+                            <div class="icon-container mb-3">
+                                <svg class="logo-svg text-primary-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                                    </path>
+                                </svg>
                             </div>
-                            <div class="flex items-center gap-3 group/item">
-                                <img src="img/logos/postman.png" alt="Postman"
-                                    class="h-7 w-7 object-contain group-hover/item:scale-110 transition-transform">
-                                <span class="text-[16px] font-semibold text-dark-600 dark:text-gray-300">Postman</span>
+                            <div class="title typewriter-effect" style="--char-count: 13;">Herramientas</div>
+                            <div class="description-grid mt-4">
+                                <div class="skill-item"><img src="img/logos/docker.png" alt="Docker">
+                                    <span>Docker</span>
+                                </div>
+                                <div class="skill-item"><img src="img/logos/postman.png" alt="Postman">
+                                    <span>Postman</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -482,254 +623,208 @@
         <div class="max-w-7xl mx-auto">
             <h2 class="section-title">Experiencia</h2>
 
-            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
 
-                <div class="js-tilt glow-card group relative p-8 rounded-3xl bg-transparent backdrop-blur-md border border-gray-200/10 dark:border-white/10 h-full isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-3xl"></div>
-                    <div style="transform: translateZ(30px)">
-                        <div class="flex items-start mb-6">
-                            <img src="img/alcaravan.jpeg" alt="Logo Alcaraván"
-                                class="w-16 h-16 rounded-2xl object-cover shadow-lg mr-5 border border-white/10">
-                            <div>
-                                <h3
-                                    class="font-bold text-xl text-dark-800 dark:text-white group-hover:text-primary-400 transition-colors">
-                                    Desarrollador Web</h3>
-                                <p class="text-primary-500 font-bold text-sm tracking-tight uppercase">SISTEMAS
-                                    TECNOLÓGICOS ALCARAVÁN, S.A</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium italic">Ago 2025 -
-                                    Presente • Venezuela</p>
+                <!-- Experiencia 1: Alcaraván -->
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header pb-4">
+                            <div class="icon-container mb-4 w-16 h-16 p-1">
+                                <img src="img/alcaravan.jpeg" alt="Logo Alcaraván"
+                                    class="w-full h-full rounded-xl object-cover">
                             </div>
+                            <div class="title typewriter-effect" style="--char-count: 17;">Desarrollador Web</div>
+                            <p
+                                class="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mt-2">
+                                SISTEMAS TECNOLÓGICOS ALCARAVÁN, S.A
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-1">
+                                Ago 2025 - Presente • Venezuela
+                            </p>
                         </div>
-                        <ul
-                            class="space-y-3 mb-8 pl-5 list-disc text-[15px] text-dark-600 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
-                            <li>Plataforma "Güirirí", sistema de gestión tributaria municipal utilizado activamente por
-                                diversas alcaldías a nivel nacional.</li>
-                            <li>Implementación de funcionalidades para la automatización de trámites en línea,
-                                optimizando la gestión al contribuyente sobre la infraestructura existente.</li>
-                            <li>Colaboración con el equipo, utilizando Python, Odoo y Next.js para el soporte y
-                                escalabilidad del sistema.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2.5 mt-auto">
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/python.png" class="w-4 h-4 object-contain" alt="Python">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Python</span>
+
+                        <div class="flex-grow">
+                            <ul
+                                class="space-y-3 pl-4 list-disc text-base text-slate-700 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
+                                <li>Plataforma "Güirirí", sistema de gestión tributaria municipal utilizado activamente
+                                    por diversas alcaldías a nivel nacional.</li>
+                                <li>Implementación de funcionalidades para la automatización de trámites en línea,
+                                    optimizando la gestión al contribuyente.</li>
+                                <li>Colaboración con el equipo, utilizando Python, Odoo y Next.js para el soporte y
+                                    escalabilidad del sistema.</li>
+                            </ul>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-6">
+                            <div class="skill-item tag"><img src="img/logos/python.png" alt="Python">
+                                <span>Python</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/odoo.png" class="w-4 h-4 object-contain" alt="Odoo">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Odoo</span>
+                            <div class="skill-item tag"><img src="img/logos/odoo.png" alt="Odoo"> <span>Odoo</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/nextjs.png" class="w-4 h-4 object-contain bg-white rounded-full"
-                                    alt="Next.js">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Next.js</span>
+                            <div class="skill-item tag"><img src="img/logos/nextjs.png" alt="Next.js"
+                                    style="background: white; border-radius: 50%;"> <span>Next.js</span></div>
+                            <div class="skill-item tag"><img src="img/logos/gitlab.png" alt="GitLab">
+                                <span>GitLab</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/gitlab.png" class="w-4 h-4 object-contain" alt="GitLab">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">GitLab</span>
+                            <div class="skill-item tag"><img src="img/logos/OpenProject.png" alt="OpenProject">
+                                <span>OpenProject</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/OpenProject.png" class="w-4 h-4 object-contain" alt="OpenProject">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">OpenProject</span>
+                            <div class="skill-item tag"><img src="img/logos/postman.png" alt="Postman">
+                                <span>Postman</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/postman.png" class="w-4 h-4 object-contain" alt="Postman">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Postman</span>
+                            <div class="skill-item tag"><img src="img/logos/docker.png" alt="Docker">
+                                <span>Docker</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/docker.png" class="w-4 h-4 object-contain" alt="Docker">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Docker</span>
-                            </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/postgreSQL.png" class="w-4 h-4 object-contain" alt="PostgreSQL">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">PostgreSQL</span>
+                            <div class="skill-item tag"><img src="img/logos/postgreSQL.png" alt="PostgreSQL">
+                                <span>PostgreSQL</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="js-tilt glow-card group relative p-8 rounded-3xl bg-transparent backdrop-blur-md border border-gray-200/10 dark:border-white/10 h-full isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-3xl"></div>
-                    <div style="transform: translateZ(30px)">
-                        <div class="flex items-start mb-6">
-                            <img src="img/unerg-logo.jpg" alt="Logo UNERG"
-                                class="w-16 h-16 rounded-2xl object-cover shadow-lg mr-5 border border-white/10">
-                            <div>
-                                <h3
-                                    class="font-bold text-xl text-dark-800 dark:text-white group-hover:text-primary-400 transition-colors">
-                                    Desarrollador Web</h3>
-                                <p class="text-primary-500 font-bold text-sm tracking-tight uppercase">Univ. Rómulo
-                                    Gallegos (UNERG)</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium italic">May 2025 -
-                                    Jul 2025 • Venezuela</p>
+                <!-- Experiencia 2: UNERG -->
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header pb-4">
+                            <div class="icon-container mb-4 w-16 h-16 p-1">
+                                <img src="img/unerg-logo.jpg" alt="Logo UNERG"
+                                    class="w-full h-full rounded-xl object-cover">
                             </div>
+                            <div class="title typewriter-effect" style="--char-count: 17;">Desarrollador Web</div>
+                            <p
+                                class="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mt-2">
+                                Univ. Rómulo Gallegos (UNERG)
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-1">
+                                May 2025 - Jul 2025 • Venezuela
+                            </p>
                         </div>
-                        <ul
-                            class="space-y-3 mb-8 pl-5 list-disc text-[15px] text-dark-600 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
-                            <li>Reingeniería integral del Sistema Clínico Odontológico utilizando PHP y Laravel 12 para
-                                optimizar la atención y gestión administrativa.</li>
-                            <li>Desarrollo de interfaces interactivas con Livewire 3 y Tailwind CSS para la
-                                administración de historias clínicas y evaluación académica.</li>
-                            <li>Gestión de bases de datos con MySQL para asegurar la integridad y seguridad de la
-                                información académica y clínica.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2.5 mt-auto">
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/PHP-logo.svg" class="w-4 h-4 object-contain" alt="PHP">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">PHP</span>
+
+                        <div class="flex-grow">
+                            <ul
+                                class="space-y-3 pl-4 list-disc text-base text-slate-700 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
+                                <li>Reingeniería integral del Sistema Clínico Odontológico utilizando PHP y Laravel 12
+                                    para optimizar la gestión.</li>
+                                <li>Desarrollo de interfaces interactivas con Livewire 3 y Tailwind CSS para la
+                                    administración de historias clínicas.</li>
+                                <li>Gestión de bases de datos con MySQL para asegurar la integridad y seguridad de la
+                                    información académica.</li>
+                            </ul>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-6">
+                            <div class="skill-item tag"><img src="img/logos/PHP-logo.svg" alt="PHP"> <span>PHP</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/Laravel.svg" class="w-4 h-4 object-contain" alt="Laravel">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Laravel</span>
+                            <div class="skill-item tag"><img src="img/logos/Laravel.svg" alt="Laravel">
+                                <span>Laravel</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/livewire.png" class="w-4 h-4 object-contain" alt="Livewire">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Livewire</span>
+                            <div class="skill-item tag"><img src="img/logos/livewire.png" alt="Livewire">
+                                <span>Livewire</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/JavaScript.png" class="w-4 h-4 object-contain" alt="JavaScript">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">JavaScript</span>
+                            <div class="skill-item tag"><img src="img/logos/JavaScript.png" alt="JavaScript">
+                                <span>JavaScript</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/html.svg" class="w-4 h-4 object-contain" alt="HTML5">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">HTML5</span>
+                            <div class="skill-item tag"><img src="img/logos/html.svg" alt="HTML5"> <span>HTML5</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/Tailwind.svg" class="w-4 h-4 object-contain" alt="Tailwind">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Tailwind</span>
+                            <div class="skill-item tag"><img src="img/logos/Tailwind.svg" alt="Tailwind">
+                                <span>Tailwind</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/mysql.png" class="w-4 h-4 object-contain" alt="MySQL">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">MySQL</span>
+                            <div class="skill-item tag"><img src="img/logos/mysql.png" alt="MySQL"> <span>MySQL</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="js-tilt glow-card group relative p-8 rounded-3xl bg-transparent backdrop-blur-md border border-gray-200/10 dark:border-white/10 h-full isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-3xl"></div>
-                    <div style="transform: translateZ(30px)">
-                        <div class="flex items-start mb-6">
-                            <img src="img/tappers-logo.png" alt="Logo Tappers"
-                                class="w-16 h-16 rounded-2xl object-cover shadow-lg mr-5 border border-white/10 bg-gray-100/10">
-                            <div>
-                                <h3
-                                    class="font-bold text-xl text-dark-800 dark:text-white group-hover:text-primary-400 transition-colors">
-                                    Consultor BD / Desarrollador Web</h3>
-                                <p class="text-primary-500 font-bold text-sm tracking-tight uppercase">TAP SOLUTIONS
-                                    S.A.S</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium italic">Sep 2022 -
-                                    Jun 2023 • Colombia (Remoto)</p>
+                <!-- Experiencia 3: TAP SOLUTIONS -->
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header pb-4">
+                            <div class="icon-container mb-4 w-16 h-16 p-1">
+                                <img src="img/tappers-logo.png" alt="Logo Tappers"
+                                    class="w-full h-full rounded-xl object-cover bg-white/10">
                             </div>
+                            <div class="title typewriter-effect" style="--char-count: 28;">Consultor BD / Desarrollador
+                            </div>
+                            <p
+                                class="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mt-2">
+                                TAP SOLUTIONS S.A.S
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-1">
+                                Sep 2022 - Jun 2023 • Colombia (Remoto)
+                            </p>
                         </div>
-                        <ul
-                            class="space-y-3 mb-8 pl-5 list-disc text-[15px] text-dark-600 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
-                            <li>Consultoría y administración de bases de datos SQL Server, realizando mantenimiento y
-                                optimización de consultas complejas para asegurar la integridad de la información.</li>
-                            <li>Desarrollo web y soporte técnico especializado en PHP, diagnosticando y resolviendo
-                                incidencias operativas para garantizar la continuidad del servicio.</li>
-                            <li>Ejecución de análisis de datos y generación de informes estratégicos para la gerencia.
-                            </li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2.5 mt-auto">
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/PHP-logo.svg" class="w-4 h-4 object-contain" alt="PHP">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">PHP</span>
+
+                        <div class="flex-grow">
+                            <ul
+                                class="space-y-3 pl-4 list-disc text-base text-slate-700 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
+                                <li>Consultoría y administración de bases de datos SQL Server, optimizando consultas
+                                    complejas.</li>
+                                <li>Desarrollo web y soporte técnico especializado en PHP, diagnosticando y resolviendo
+                                    incidencias operativas.</li>
+                                <li>Ejecución de análisis de datos y generación de informes estratégicos para la
+                                    gerencia.</li>
+                            </ul>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-6">
+                            <div class="skill-item tag"><img src="img/logos/PHP-logo.svg" alt="PHP"> <span>PHP</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/JavaScript.png" class="w-4 h-4 object-contain" alt="JavaScript">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">JavaScript</span>
+                            <div class="skill-item tag"><img src="img/logos/JavaScript.png" alt="JavaScript">
+                                <span>JavaScript</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/html.svg" class="w-4 h-4 object-contain" alt="HTML5">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">HTML5</span>
+                            <div class="skill-item tag"><img src="img/logos/html.svg" alt="HTML5"> <span>HTML5</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/sql-server.png" class="w-4 h-4 object-contain" alt="SQL Server">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">SQL Server</span>
-                            </div>
+                            <div class="skill-item tag"><img src="img/logos/sql-server.png" alt="SQL Server"> <span>SQL
+                                    Server</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="js-tilt glow-card group relative p-8 rounded-3xl bg-transparent backdrop-blur-md border border-gray-200/10 dark:border-white/10 h-full isolate overflow-hidden"
-                    style="transform-style: preserve-3d">
-                    <div class="glow-border absolute inset-0 -z-10 rounded-3xl"></div>
-                    <div style="transform: translateZ(30px)">
-                        <div class="flex items-start mb-6">
-                            <img src="img/ivss-logo.png" alt="Logo IVSS"
-                                class="w-16 h-16 rounded-2xl object-cover shadow-lg mr-5 border border-white/10">
-                            <div>
-                                <h3
-                                    class="font-bold text-xl text-dark-800 dark:text-white group-hover:text-primary-400 transition-colors">
-                                    Desarrollador Web (Pasantía)</h3>
-                                <p class="text-primary-500 font-bold text-sm tracking-tight uppercase">Hospital “JOSÉ
-                                    ANTONIO VARGAS” (IVSS)</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium italic">Abr 2021 -
-                                    Jun 2021 • Venezuela</p>
+                <!-- Experiencia 4: IVSS -->
+                <div class="card-container reveal-on-scroll">
+                    <div class="plugin-card futuristic">
+                        <div class="card-header pb-4">
+                            <div class="icon-container mb-4 w-16 h-16 p-1">
+                                <img src="img/ivss-logo.png" alt="Logo IVSS"
+                                    class="w-full h-full rounded-xl object-cover">
                             </div>
+                            <div class="title typewriter-effect" style="--char-count: 28;">Desarrollador Web (Pasantía)
+                            </div>
+                            <p
+                                class="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mt-2">
+                                Hospital “JOSÉ ANTONIO VARGAS”
+                            </p>
+                            <p class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-1">
+                                Abr 2021 - Jun 2021 • Venezuela
+                            </p>
                         </div>
-                        <ul
-                            class="space-y-3 mb-8 pl-5 list-disc text-[15px] text-dark-600 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
-                            <li>Desarrollo de un sistema web integral utilizando PHP (Laravel) y MySQL para la
-                                automatización de citas médicas, inventario de farmacia y gestión de archivos clínicos.
-                            </li>
-                            <li>Digitalización de registros manuales vulnerables, migrando la información a bases de
-                                datos seguras para proteger los datos de los pacientes.</li>
-                            <li>Optimización de los tiempos de respuesta en la búsqueda de historias médicas y
-                                generación automatizada de reportes en PDF.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2.5 mt-auto">
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/PHP-logo.svg" class="w-4 h-4 object-contain" alt="PHP">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">PHP</span>
+
+                        <div class="flex-grow">
+                            <ul
+                                class="space-y-3 pl-4 list-disc text-base text-slate-700 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
+                                <li>Desarrollo de un sistema web integral con PHP (Laravel) y MySQL para citas e
+                                    inventario.</li>
+                                <li>Digitalización de registros manuales, migrando la información a bases de datos
+                                    seguras.</li>
+                                <li>Optimización de los tiempos de respuesta en la búsqueda de historias médicas.</li>
+                            </ul>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-6">
+                            <div class="skill-item tag"><img src="img/logos/PHP-logo.svg" alt="PHP"> <span>PHP</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/Laravel.svg" class="w-4 h-4 object-contain" alt="Laravel">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Laravel</span>
+                            <div class="skill-item tag"><img src="img/logos/Laravel.svg" alt="Laravel">
+                                <span>Laravel</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/Bootstrap.png" class="w-4 h-4 object-contain" alt="Bootstrap">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">Bootstrap</span>
+                            <div class="skill-item tag"><img src="img/logos/Bootstrap.png" alt="Bootstrap">
+                                <span>Bootstrap</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/JavaScript.png" class="w-4 h-4 object-contain" alt="JavaScript">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">JavaScript</span>
+                            <div class="skill-item tag"><img src="img/logos/JavaScript.png" alt="JavaScript">
+                                <span>JavaScript</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/html.svg" class="w-4 h-4 object-contain" alt="HTML5">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">HTML5</span>
+                            <div class="skill-item tag"><img src="img/logos/html.svg" alt="HTML5"> <span>HTML5</span>
                             </div>
-                            <div
-                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-gray-300 dark:border-white/10 rounded-xl">
-                                <img src="img/logos/mysql.png" class="w-4 h-4 object-contain" alt="MySQL">
-                                <span class="text-xs font-bold text-dark-700 dark:text-gray-200">MySQL</span>
+                            <div class="skill-item tag"><img src="img/logos/mysql.png" alt="MySQL"> <span>MySQL</span>
                             </div>
                         </div>
                     </div>
@@ -743,48 +838,51 @@
         <div class="max-w-4xl mx-auto">
             <h2 class="section-title">Contacto</h2>
 
-            <div class="js-tilt glow-card group relative p-8 rounded-3xl bg-transparent backdrop-blur-md border border-gray-200/10 dark:border-white/10 isolate overflow-hidden"
-                style="transform-style: preserve-3d">
-                <div class="glow-border absolute inset-0 -z-10 rounded-3xl"></div>
+            <!-- Contact Card with Futuristic Style -->
+            <div class="card-container">
+                <div class="plugin-card futuristic p-8">
+                    <form id="contactForm" action="https://formspree.io/f/mrebnabe" method="POST"
+                        class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                        <div class="col-span-1">
+                            <label for="name"
+                                class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Nombre</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 rounded-xl bg-white/90 dark:bg-dark-900/60 border-2 border-gray-300/60 dark:border-slate-600/60 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all placeholder-gray-400"
+                                placeholder="Tu nombre">
+                        </div>
 
-                <form id="contactForm" action="https://formspree.io/f/mrebnabe" method="POST"
-                    class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-                    <div class="col-span-1">
-                        <label for="name"
-                            class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Nombre</label>
-                        <input type="text" id="name" name="name" required
-                            class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-dark-900/50 border border-gray-200 dark:border-dark-700 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none transition-all placeholder-gray-400"
-                            placeholder="Tu nombre">
-                    </div>
+                        <div class="col-span-1">
+                            <label for="email"
+                                class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Correo
+                                electrónico</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 rounded-xl bg-white/90 dark:bg-dark-900/60 border-2 border-gray-300/60 dark:border-slate-600/60 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all placeholder-gray-400"
+                                placeholder="tucorreo@ejemplo.com">
+                        </div>
 
-                    <div class="col-span-1">
-                        <label for="email"
-                            class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Correo
-                            electrónico</label>
-                        <input type="email" id="email" name="email" required
-                            class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-dark-900/50 border border-gray-200 dark:border-dark-700 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none transition-all placeholder-gray-400"
-                            placeholder="tucorreo@ejemplo.com">
-                    </div>
+                        <div class="col-span-1 md:col-span-2">
+                            <label for="message"
+                                class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="w-full px-4 py-3 rounded-xl bg-white/90 dark:bg-dark-900/60 border-2 border-gray-300/60 dark:border-slate-600/60 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all placeholder-gray-400 resize-none"
+                                placeholder="¿En qué puedo ayudarte?"></textarea>
+                        </div>
 
-                    <div class="col-span-1 md:col-span-2">
-                        <label for="message"
-                            class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Mensaje</label>
-                        <textarea id="message" name="message" rows="4" required
-                            class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-dark-900/50 border border-gray-200 dark:border-dark-700 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none transition-all placeholder-gray-400 resize-none"
-                            placeholder="¿En qué puedo ayudarte?"></textarea>
-                    </div>
+                        <!-- Form Status Message -->
+                        <div id="formStatus" class="hidden col-span-1 md:col-span-2"></div>
 
-                    <div class="col-span-1 md:col-span-2 flex justify-end">
-                        <button type="submit" id="submitBtn"
-                            class="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2">
-                            <span>Enviar mensaje</span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </form>
+                        <div class="col-span-1 md:col-span-2 flex justify-end">
+                            <button type="submit" id="submitBtn" class="btn-futuristic">
+                                <span>Enviar mensaje</span>
+                                <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -839,6 +937,7 @@
         </div>
     </footer>
 
+    <script src="js/svg-theme.js"></script>
     <script src="js/main.js"></script>
     <script src="js/generateCV.js"></script>
 </body>
