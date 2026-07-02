@@ -91,7 +91,7 @@ window.generateCV = async function() {
 
     // --- PERFIL ---
     leftY += renderSectionTitle("PERFIL", margin, leftY);
-    const profileText = "Desarrollador Full Stack con experiencia en desarrollo web utilizando Laravel, PHP, Python y Odoo, y gestión de bases de datos (SQL Server, MySQL y PostgreSQL). Comprometido con la resolución de problemas técnicos, capacidad analítica y adaptación a metodologías ágiles.";
+    const profileText = "Desarrollador Full Stack con experiencia en desarrollo web utilizando Laravel, PHP, Python, Django y Odoo, y gestión de bases de datos (SQL Server, MySQL y PostgreSQL). Comprometido con la resolución de problemas técnicos, capacidad analítica y adaptación a metodologías ágiles.";
     
     leftY += writeWrappedText(profileText, margin, leftY, leftColWidth, 8.5, false, [60,60,60]);
     leftY += 6;
@@ -113,7 +113,7 @@ window.generateCV = async function() {
         leftY += height + 3;
     };
 
-    renderSkillGroup("Backend", "PHP, Laravel, Livewire, Python, Odoo");
+    renderSkillGroup("Backend", "PHP, Laravel, Livewire, Python, Django, Odoo");
     renderSkillGroup("Frontend", "HTML5, Tailwind CSS, Bootstrap CSS, JavaScript, Next.js");
     renderSkillGroup("Bases de Datos", "MySQL, SQL Server, PostgreSQL");
     renderSkillGroup("Control de Versiones", "Git, GitHub, GitLab");
@@ -174,7 +174,7 @@ window.generateCV = async function() {
         [
             "Plataforma 'Güirirí', sistema de gestión tributaria municipal utilizado activamente por diversas alcaldías a nivel nacional.",
             "Implementación de funcionalidades para la automatización de trámites en línea, optimizando la gestión al contribuyente sobre la infraestructura existente.",
-            "Colaboración con el equipo, utilizando Python, Odoo y Next.js para el soporte y escalabilidad del sistema."
+            "Colaboración con el equipo, utilizando Python, Django, Odoo y Next.js para el soporte y escalabilidad del sistema."
         ]
     );
 

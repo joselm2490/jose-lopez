@@ -121,7 +121,7 @@ try {
                 <div class="section-title">HABILIDADES</div>
                 
                 <div class="skills-category">Backend:</div>
-                <div class="skills-list">PHP, Laravel, Livewire</div>
+                <div class="skills-list">PHP, Laravel, Livewire, Python, Django, Odoo</div>
                 
                 <div class="skills-category">Frontend:</div>
                 <div class="skills-list">HTML, JavaScript, Tailwind CSS, Bootstrap</div>
