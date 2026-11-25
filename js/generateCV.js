@@ -173,7 +173,7 @@ window.generateCV = async function() {
         "Ago 2025 - Presente • Venezuela",
         [
             "Plataforma 'Güirirí' (Odoo): sistema de gestión tributaria municipal utilizado activamente por diversas alcaldías a nivel nacional para la automatización de trámites en línea.",
-            "Plataforma SERGIDESOL — Servicio Desconcentrado de Gestión Integral de los Desechos Sólidos (Django): desarrollo en sistema integral de recaudación y gestión municipal (contribuyentes, inmuebles, facturación, taquillas, retenciones fiscales y reportes) con PostgreSQL, Tailwind CSS y Docker.",
+            "Plataforma SERGIDESOL (Django): Servicio Desconcentrado de Gestión Integral de los Desechos Sólidos; sistema integral de recaudación y gestión municipal (contribuyentes, inmuebles, facturación, taquillas, retenciones fiscales y reportes) con PostgreSQL, Tailwind CSS y Docker.",
             "Colaboración con el equipo utilizando Python, Django, Odoo, Next.js y PostgreSQL para el soporte y escalabilidad de ambos sistemas."
         ]
     );
