@@ -172,9 +172,9 @@ window.generateCV = async function() {
         "SISTEMAS TECNOLÓGICOS ALCARAVÁN, S.A",
         "Ago 2025 - Presente • Venezuela",
         [
-            "Plataforma 'Güirirí', sistema de gestión tributaria municipal utilizado activamente por diversas alcaldías a nivel nacional.",
-            "Implementación de funcionalidades para la automatización de trámites en línea, optimizando la gestión al contribuyente sobre la infraestructura existente.",
-            "Colaboración con el equipo, utilizando Python, Django, Odoo y Next.js para el soporte y escalabilidad del sistema."
+            "Plataforma 'Güirirí' (Odoo): sistema de gestión tributaria municipal utilizado activamente por diversas alcaldías a nivel nacional para la automatización de trámites en línea.",
+            "Plataforma SERGIDESOL (Django): desarrollo en sistema integral de recaudación y gestión municipal (contribuyentes, inmuebles, facturación, taquillas, retenciones fiscales y reportes) con PostgreSQL, Tailwind CSS y Docker.",
+            "Colaboración con el equipo utilizando Python, Django, Odoo, Next.js y PostgreSQL para el soporte y escalabilidad de ambos sistemas."
         ]
     );
 
