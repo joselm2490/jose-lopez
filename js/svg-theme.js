@@ -128,4 +128,3 @@ function updateSVGColors() {
 
 // Function is called from main.js after theme is initialized
 // This ensures the dark class is applied before we update SVG colors
-svg - theme.js

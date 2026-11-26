@@ -1,47 +1,71 @@
 // js/main.js
 
-// --- 1. ANIMACIÓN DE TEXTO (TYPEWRITER) "Hola, soy..." ---
+// --- 1. ANIMACIÓN DE TEXTO (TYPEWRITER) ---
 const TextTyper = (() => {
-    const words = [
+    let words = [
         "Ingeniero en Informática",
         "Desarrollador Web",
         "Backend Developer",
         "Full Stack Developer"
     ];
     let i = 0;
-    let timer;
+    let timer = null;
+    let element = null;
 
-    function type(element, text, index = 0) {
-        if (index < text.length) {
-            element.textContent += text.charAt(index);
-            timer = setTimeout(() => type(element, text, index + 1), 100);
-        } else {
-            setTimeout(() => erase(element), 2000);
+    function clearTimers() {
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
         }
     }
 
-    function erase(element) {
-        const text = element.textContent;
+    function type(target, text, index = 0) {
+        if (index < text.length) {
+            target.textContent += text.charAt(index);
+            timer = setTimeout(() => type(target, text, index + 1), 100);
+        } else {
+            timer = setTimeout(() => erase(target), 2000);
+        }
+    }
+
+    function erase(target) {
+        const text = target.textContent;
         if (text.length > 0) {
-            element.textContent = text.substring(0, text.length - 1);
-            timer = setTimeout(() => erase(element), 50);
+            target.textContent = text.substring(0, text.length - 1);
+            timer = setTimeout(() => erase(target), 50);
         } else {
             i = (i + 1) % words.length;
-            setTimeout(() => type(element, words[i]), 500);
+            timer = setTimeout(() => type(target, words[i]), 500);
         }
     }
 
     function init() {
-        const element = document.getElementById('text');
+        element = document.getElementById('text');
         if (element) {
+            clearTimers();
+            element.textContent = '';
+            i = 0;
             type(element, words[0]);
         }
     }
 
-    return { init };
+    function setWords(newWords) {
+        if (!Array.isArray(newWords) || newWords.length === 0) return;
+        words = newWords;
+        if (element) {
+            clearTimers();
+            element.textContent = '';
+            i = 0;
+            type(element, words[0]);
+        }
+    }
+
+    return { init, setWords };
 })();
 
-// --- 2. SUBSTRATE EFFECT MODULE (FONDO ANIMADO) ---
+window.TextTyper = TextTyper;
+
+// --- 2. SUBSTRATE EFFECT MODULE (FONDO ANIMADO OPTIMIZADO) ---
 const SubstrateEffect = (() => {
     let canvas, context, width, height, dpr;
     let boids = [];
@@ -49,6 +73,8 @@ const SubstrateEffect = (() => {
     let isRunning = false;
 
     const random = Math.random;
+    const prefersReducedMotion = () =>
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const Boid = function (x, y, angle) {
         this.x = x;
@@ -99,23 +125,31 @@ const SubstrateEffect = (() => {
             window.addEventListener('resize', resize);
             resize();
             window.addEventListener('pointerdown', function (event) {
+                if (prefersReducedMotion()) return;
                 const x = event.clientX * dpr;
                 const y = event.clientY * dpr;
                 const angle = random() * 360 * Math.PI / 180;
                 boids.push(new Boid(x, y, angle));
             });
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    stop();
+                } else if (!prefersReducedMotion()) {
+                    start();
+                }
+            });
         }
     }
 
     function resize() {
-        dpr = window.devicePixelRatio || 1;
-        width = window.innerWidth * dpr;
-        height = window.innerHeight * dpr;
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        width = Math.floor(window.innerWidth * dpr);
+        height = Math.floor(window.innerHeight * dpr);
         canvas.width = width;
         canvas.height = height;
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
-        context.scale(1, 1);
+        context.setTransform(1, 0, 0, 1, 0, 0);
         boids = [];
         startBoids();
     }
@@ -128,13 +162,13 @@ const SubstrateEffect = (() => {
     }
 
     function loop() {
-        if (!isRunning) return;
+        if (!isRunning || document.hidden) return;
         const image = context.getImageData(0, 0, width, height);
         const data = image.data;
         for (let i = 0; i < boids.length; i++) {
             const boid = boids[i];
             boid.update(data);
-            if (!boid.isDead && random() > 0.8 && boids.length < 500) {
+            if (!boid.isDead && random() > 0.8 && boids.length < 400) {
                 const angle = boid.angle + (random() > 0.5 ? 90 : -90) * Math.PI / 180;
                 boids.push(new Boid(boid.x, boid.y, angle));
             }
@@ -143,17 +177,54 @@ const SubstrateEffect = (() => {
         animationId = requestAnimationFrame(loop);
     }
 
-    function start() { if (isRunning) return; isRunning = true; loop(); }
-    function stop() { isRunning = false; cancelAnimationFrame(animationId); }
-    function reset() { context.clearRect(0, 0, width, height); boids = []; startBoids(); }
+    function start() {
+        if (isRunning || prefersReducedMotion() || document.hidden) return;
+        isRunning = true;
+        loop();
+    }
+
+    function stop() {
+        isRunning = false;
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+    }
+
+    function reset() {
+        if (!context) return;
+        context.clearRect(0, 0, width, height);
+        boids = [];
+        startBoids();
+    }
 
     return { init, start, stop, reset };
 })();
 
-// --- 3. INICIALIZACIÓN GENERAL ---
+// --- 3. TOAST HELPER ---
+function showToast(message) {
+    let toast = document.getElementById('app-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'app-toast';
+        toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[10000] px-5 py-3 rounded-xl bg-dark-900/90 dark:bg-white/90 text-white dark:text-dark-900 text-sm font-medium shadow-xl backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.remove('opacity-0', 'translate-y-2');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-2');
+    }, 2600);
+}
+
+// --- 4. INICIALIZACIÓN GENERAL ---
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Iniciar Animación de Texto (Restaurado)
+    // Iniciar Animación de Texto
     TextTyper.init();
 
     // Iniciar Fondo Substrate
@@ -174,7 +245,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSVGColors();
     }
 
-    // Resetear efecto al cambiar tema
     setTimeout(() => { SubstrateEffect.reset(); }, 50);
 
     if (themeToggleBtn) {
@@ -206,32 +276,25 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }, {
-        threshold: 0.05, // More lenient for mobile
-        rootMargin: "0px 0px -20px 0px" // Less aggressive bottom margin
+        threshold: 0.05,
+        rootMargin: "0px 0px -20px 0px"
     });
 
     document.querySelectorAll('.experience-card, .section-title, .about-content, .reveal-on-scroll').forEach(element => {
         observer.observe(element);
     });
 
-    // --- TILT & GLOW (Para tarjetas normales) ---
-    VanillaTilt.init(document.querySelectorAll(".info-card, .contact-card"), {
-        max: 3,
-        speed: 1000,
-        glare: true,
-        "max-glare": 0.1,
-        scale: 1.02,
-        gyroscope: true
-    });
-
-    // --- LOAD FADE-IN ---
-    window.addEventListener('load', function () {
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.5s ease';
-        setTimeout(() => {
-            document.body.style.opacity = '1';
-        }, 100);
-    });
+    // --- TILT & GLOW ---
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll(".plugin-card.futuristic"), {
+            max: 3,
+            speed: 1000,
+            glare: true,
+            "max-glare": 0.1,
+            scale: 1.01,
+            gyroscope: true
+        });
+    }
 
     // --- CONTACT FORM HANDLER ---
     const contactForm = document.getElementById('contactForm');
@@ -241,9 +304,16 @@ document.addEventListener('DOMContentLoaded', function () {
     if (contactForm) {
         contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
+            const lang = typeof window.getCurrentLang === 'function' ? window.getCurrentLang() : 'es';
+            const dict = (window.I18N_DICT && window.I18N_DICT[lang]) ? window.I18N_DICT[lang].contact : {
+                sending: 'Enviando...',
+                success: '¡Gracias! Tu mensaje ha sido enviado correctamente.',
+                error: 'Hubo un problema al enviar el mensaje. Por favor, intenta nuevamente.'
+            };
+
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span>Enviando...</span>';
+            submitBtn.innerHTML = `<span>${dict.sending}</span>`;
             if (formStatus) formStatus.classList.add('hidden');
 
             const formData = new FormData(contactForm);
@@ -258,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     if (formStatus) {
                         formStatus.className = "col-span-1 md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 animate-fade-in";
-                        formStatus.innerHTML = "¡Gracias! Tu mensaje ha sido enviado correctamente.";
+                        formStatus.textContent = dict.success;
                     }
                     contactForm.reset();
                 } else {
@@ -267,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } catch (error) {
                 if (formStatus) {
                     formStatus.className = "col-span-1 md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 animate-fade-in";
-                    formStatus.innerHTML = "Hubo un problema al enviar el mensaje. Por favor, intenta nuevamente.";
+                    formStatus.textContent = dict.error;
                 }
             } finally {
                 submitBtn.disabled = false;
@@ -298,11 +368,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Función global para copiar email
 window.copyEmail = function (e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const email = "joselm2490@gmail.com";
+    const lang = typeof window.getCurrentLang === 'function' ? window.getCurrentLang() : 'es';
+    const copiedMsg = (window.I18N_DICT && window.I18N_DICT[lang])
+        ? window.I18N_DICT[lang].contact.copied
+        : "¡Correo copiado al portapapeles!";
+
     navigator.clipboard.writeText(email).then(() => {
-        alert("¡Correo copiado al portapapeles!\n" + email);
-    }).catch(err => {
+        showToast(`${copiedMsg} (${email})`);
+    }).catch(() => {
         window.location.href = "mailto:" + email;
     });
 };

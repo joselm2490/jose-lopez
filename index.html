@@ -5,52 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>José López - Ingeniero en Informática</title>
+    <meta name="description"
+        content="Portafolio de José López, Ingeniero en Informática y Desarrollador Full Stack especializado en Laravel, PHP, Python, Django, Odoo, Next.js y bases de datos SQL.">
+    <meta name="author" content="José López">
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="José López - Ingeniero en Informática | Desarrollador Full Stack">
+    <meta property="og:description"
+        content="Portafolio profesional: experiencia en sistemas web escalables con Django, Odoo, Laravel, Next.js y gestión avanzada de bases de datos.">
+    <meta property="og:image" content="img/profile-pic.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="José López - Ingeniero en Informática | Desarrollador Full Stack">
+    <meta name="twitter:description"
+        content="Portafolio profesional: experiencia en sistemas web escalables con Django, Odoo, Laravel y Next.js.">
+
     <link rel="icon" href="img/favicon.png" type="image/png">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/tailwind.css?v=1">
     <link rel="stylesheet" href="css/styles.css?v=5">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
-                            400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1',
-                            800: '#075985', 900: '#0c4a6e',
-                        },
-                        dark: {
-                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
-                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
-                            800: '#1e293b', 900: '#0f172a',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['monospace'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-in-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        }
-                    }
-                }
-            }
-        };
-    </script>
 </head>
 
 <body
@@ -78,6 +56,23 @@
             </linearGradient>
         </defs>
     </svg>
+
+    <nav aria-label="Navegación principal"
+        class="fixed top-4 md:top-6 left-4 right-20 md:left-1/2 md:right-auto md:-translate-x-1/2 z-[9990] flex items-center justify-between md:justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 rounded-2xl bg-white/75 dark:bg-dark-800/75 backdrop-blur-md border border-gray-200/70 dark:border-white/10 shadow-lg overflow-x-auto max-w-full">
+        <a href="#home" data-i18n="nav.home"
+            class="px-2.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium text-dark-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-500/10 transition-colors whitespace-nowrap">Inicio</a>
+        <a href="#about" data-i18n="nav.about"
+            class="px-2.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium text-dark-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-500/10 transition-colors whitespace-nowrap">Sobre Mí</a>
+        <a href="#experience" data-i18n="nav.experience"
+            class="px-2.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium text-dark-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-500/10 transition-colors whitespace-nowrap">Experiencia</a>
+        <a href="#contact" data-i18n="nav.contact"
+            class="px-2.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium text-dark-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-500/10 transition-colors whitespace-nowrap">Contacto</a>
+        <span class="h-4 w-[1px] bg-gray-300 dark:bg-white/15 mx-0.5 shrink-0" aria-hidden="true"></span>
+        <button id="langToggle" type="button" aria-label="Switch language to English"
+            class="px-2.5 py-1.5 rounded-xl text-xs font-bold tracking-wider text-primary-600 dark:text-primary-400 hover:bg-primary-500/15 transition-colors shrink-0 cursor-pointer">
+            <span id="langLabel">EN</span>
+        </button>
+    </nav>
 
     <button id="themeToggle" class="floating-btn theme-toggle-btn" aria-label="Cambiar tema">
         <svg id="sunIcon" class="w-6 h-6 hidden dark:block transition-transform duration-300 hover:rotate-90"
@@ -108,7 +103,7 @@
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13 10V3L4 14H11V21L20 10H13Z" />
                         </svg>
-                        <span>Transformando ideas en código</span>
+                        <span data-i18n="hero.badge">Transformando ideas en código</span>
                     </div>
 
                     <div class="flex flex-col items-center lg:items-start mb-6">
@@ -118,7 +113,7 @@
                                 <img src="img/jlll-colored.png" alt="Logo José López" class="w-16 h-16 md:w-24 md:h-24 object-contain filter drop-shadow-[0_0_20px_rgba(14,165,233,0.4)] transition-transform duration-500 group-hover:scale-105">
                             </div>
                             <div class="flex flex-col text-left">
-                                <div class="text-3xl sm:text-4xl md:text-5xl font-bold text-dark-800 dark:text-white leading-tight tracking-tight">
+                                <div data-i18n="hero.greeting" class="text-3xl sm:text-4xl md:text-5xl font-bold text-dark-800 dark:text-white leading-tight tracking-tight">
                                     Hola, soy
                                 </div>
                                 <div class="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tight mt-1">
@@ -133,22 +128,22 @@
                         </div>
                     </div>
 
-                    <p
+                    <p data-i18n="hero.stack"
                         class="text-base text-dark-600 dark:text-gray-100 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
                         Laravel | PHP | Python | Django | Odoo | Next.js | Base de Datos (SQL Server, MySQL y PostgreSQL) | HTML
                         | JavaScript
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#" onclick="generateCV()" class="btn-futuristic primary cv">
+                        <button type="button" onclick="generateCV()" class="btn-futuristic primary cv">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
                             </svg>
-                            <span>Descargar CV</span>
-                        </a>
+                            <span data-i18n="hero.downloadCv">Descargar CV</span>
+                        </button>
                         <a href="#experience" class="btn-futuristic">
-                            <span>Ver experiencia</span>
+                            <span data-i18n="hero.viewExperience">Ver experiencia</span>
                         </a>
                     </div>
                 </div>
@@ -387,7 +382,7 @@
 
     <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-7xl mx-auto">
-            <h2 class="section-title">Sobre Mí</h2>
+            <h2 class="section-title" data-i18n="about.title">Sobre Mí</h2>
 
             <div class="flex flex-col lg:flex-row gap-8 items-stretch">
                 <div class="w-full lg:w-1/3">
@@ -406,21 +401,21 @@
 
                         <div class="text-center relative z-10 transition-transform duration-500 group-hover:scale-105">
                             <h3 class="text-3xl font-black text-dark-900 dark:text-white mb-1">José López</h3>
-                            <p
+                            <p data-i18n="about.role"
                                 class="text-primary-600 dark:text-primary-400 font-black uppercase tracking-[0.2em] text-xs mb-8">
                                 Ingeniero en Informática
                             </p>
 
                             <div class="flex flex-wrap gap-4 justify-center">
-                                <a href="https://github.com/joselm2490" target="_blank" class="social-mini github"
-                                    title="GitHub">
+                                <a href="https://github.com/joselm2490" target="_blank" rel="noopener noreferrer" class="social-mini github"
+                                    title="GitHub" aria-label="GitHub">
                                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                     </svg>
                                 </a>
-                                <a href="https://linkedin.com/in/joselm2490" target="_blank"
-                                    class="social-mini linkedin" title="LinkedIn">
+                                <a href="https://linkedin.com/in/joselm2490" target="_blank" rel="noopener noreferrer"
+                                    class="social-mini linkedin" title="LinkedIn" aria-label="LinkedIn">
                                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -445,10 +440,10 @@
 
                         <div
                             class="prose lg:prose-lg max-w-none text-dark-600 dark:text-gray-300 relative z-10 flex flex-col justify-center h-full">
-                            <div class="title typewriter-effect text-2xl font-black text-primary-600 dark:text-primary-400 mb-6"
+                            <div data-i18n="about.headline" class="title typewriter-effect text-2xl font-black text-primary-600 dark:text-primary-400 mb-6"
                                 style="--char-count: 24;">Desarrollador
                                 Full Stack</div>
-                            <p class="mb-6 leading-relaxed">
+                            <p data-i18n-html="about.p1" class="mb-6 leading-relaxed">
                                 Especializado en el desarrollo de soluciones web robustas con <strong
                                     class="text-primary-600 dark:text-primary-400 font-bold">Laravel, PHP,
                                     Python, Django y Odoo</strong>. Mi trayectoria se centra en la creación de arquitecturas
@@ -456,7 +451,7 @@
                                     class="text-primary-600 dark:text-primary-400 font-bold">SQL Server, MySQL y
                                     PostgreSQL</strong>, integrando siempre las mejores prácticas del sector.
                             </p>
-                            <p class="leading-relaxed">
+                            <p data-i18n="about.p2" class="leading-relaxed">
                                 Me distingo por un enfoque analítico en el diagnóstico de sistemas y una sólida
                                 capacidad para transformar requerimientos técnicos en productos escalables. Soy un firme
                                 creyente en el aprendizaje continuo y la agilidad, lo que me permite colaborar
@@ -544,7 +539,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="title typewriter-effect" style="--char-count: 14;">Bases de Datos</div>
+                            <div data-i18n="about.catDatabases" class="title typewriter-effect" style="--char-count: 14;">Bases de Datos</div>
                             <div class="description-grid mt-4">
                                 <div class="skill-item"><img src="img/logos/mysql.png" alt="MySQL"> <span>MySQL</span>
                                 </div>
@@ -569,7 +564,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="title typewriter-effect" style="--char-count: 9;">Versiones</div>
+                            <div data-i18n="about.catVersioning" class="title typewriter-effect" style="--char-count: 9;">Versiones</div>
                             <div class="description-grid mt-4">
                                 <div class="skill-item"><img src="img/logos/git.png" alt="Git"> <span>Git</span></div>
                                 <div class="skill-item"><img src="img/logos/github.png" alt="GitHub"
@@ -593,7 +588,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="title typewriter-effect" style="--char-count: 7;">Gestión</div>
+                            <div data-i18n="about.catManagement" class="title typewriter-effect" style="--char-count: 7;">Gestión</div>
                             <div class="description-grid mt-4">
                                 <div class="skill-item"><img src="img/logos/trello.png" alt="Trello">
                                     <span>Trello</span>
@@ -621,7 +616,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="title typewriter-effect" style="--char-count: 13;">Herramientas</div>
+                            <div data-i18n="about.catTools" class="title typewriter-effect" style="--char-count: 13;">Herramientas</div>
                             <div class="description-grid mt-4">
                                 <div class="skill-item"><img src="img/logos/docker.png" alt="Docker">
                                     <span>Docker</span>
@@ -639,7 +634,7 @@
 
     <section id="experience" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-7xl mx-auto">
-            <h2 class="section-title">Experiencia</h2>
+            <h2 class="section-title" data-i18n="exp.title">Experiencia</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
 
@@ -652,12 +647,12 @@
                                     class="w-full h-full rounded-xl object-cover">
                             </div>
                             <div class="experience-details">
-                                <div class="title typewriter-effect" style="--char-count: 17;">Desarrollador Web</div>
+                                <div data-i18n="exp.alcaravan.role" class="title typewriter-effect" style="--char-count: 17;">Desarrollador Web</div>
                                 <p
                                     class="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mt-1">
                                     SISTEMAS TECNOLÓGICOS ALCARAVÁN, S.A
                                 </p>
-                                <p class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-0.5">
+                                <p data-i18n="exp.alcaravan.date" class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-0.5">
                                     Ago 2025 - Presente • Venezuela
                                 </p>
                             </div>
@@ -666,9 +661,9 @@
                         <div class="flex-grow">
                             <ul
                                 class="space-y-3 pl-4 list-disc text-base text-slate-700 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
-                                <li>Plataforma <a href="https://impuestosroscio.guiriri.com.ve/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Güirirí</a> (Odoo): sistema de gestión tributaria municipal utilizado activamente por diversas alcaldías a nivel nacional, automatizando trámites en línea para el contribuyente.</li>
-                                <li>Plataforma <a href="https://sergidesol.com.ve/login/?next=/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">SERGIDESOL</a> (Django): Servicio Desconcentrado de Gestión Integral de los Desechos Sólidos; sistema integral de recaudación y gestión municipal (contribuyentes, inmuebles, facturación, taquillas, retenciones fiscales, portal de autogestión y reportes) con PostgreSQL, Tailwind CSS y Docker.</li>
-                                <li>Colaboración con el equipo utilizando Python, Django, Odoo, Next.js y PostgreSQL para el soporte, evolución y escalabilidad de ambos ecosistemas.</li>
+                                <li data-i18n-html="exp.alcaravan.b1">Plataforma <a href="https://impuestosroscio.guiriri.com.ve/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Güirirí</a> (Odoo): sistema de gestión tributaria municipal utilizado activamente por diversas alcaldías a nivel nacional, automatizando trámites en línea para el contribuyente.</li>
+                                <li data-i18n-html="exp.alcaravan.b2">Plataforma <a href="https://sergidesol.com.ve/login/?next=/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">SERGIDESOL</a> (Django): Servicio Desconcentrado de Gestión Integral de los Desechos Sólidos; sistema integral de recaudación y gestión municipal (contribuyentes, inmuebles, facturación, taquillas, retenciones fiscales, portal de autogestión y reportes) con PostgreSQL, Tailwind CSS y Docker.</li>
+                                <li data-i18n="exp.alcaravan.b3">Colaboración con el equipo utilizando Python, Django, Odoo, Next.js y PostgreSQL para el soporte, evolución y escalabilidad de ambos ecosistemas.</li>
                             </ul>
                         </div>
 
@@ -714,12 +709,12 @@
                                     class="w-full h-full rounded-xl object-cover">
                             </div>
                             <div class="experience-details">
-                                <div class="title typewriter-effect" style="--char-count: 17;">Desarrollador Web</div>
+                                <div data-i18n="exp.unerg.role" class="title typewriter-effect" style="--char-count: 17;">Desarrollador Web</div>
                                 <p
                                     class="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mt-1">
                                     Univ. Rómulo Gallegos (UNERG)
                                 </p>
-                                <p class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-0.5">
+                                <p data-i18n="exp.unerg.date" class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-0.5">
                                     May 2025 - Jul 2025 • Venezuela
                                 </p>
                             </div>
@@ -728,11 +723,11 @@
                         <div class="flex-grow">
                             <ul
                                 class="space-y-3 pl-4 list-disc text-base text-slate-700 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
-                                <li>Reingeniería integral del Sistema Clínico Odontológico utilizando PHP y Laravel 12
+                                <li data-i18n="exp.unerg.b1">Reingeniería integral del Sistema Clínico Odontológico utilizando PHP y Laravel 12
                                     para optimizar la gestión.</li>
-                                <li>Desarrollo de interfaces interactivas con Livewire 3 y Tailwind CSS para la
+                                <li data-i18n="exp.unerg.b2">Desarrollo de interfaces interactivas con Livewire 3 y Tailwind CSS para la
                                     administración de historias clínicas.</li>
-                                <li>Gestión de bases de datos con MySQL para asegurar la integridad y seguridad de la
+                                <li data-i18n="exp.unerg.b3">Gestión de bases de datos con MySQL para asegurar la integridad y seguridad de la
                                     información académica.</li>
                             </ul>
                         </div>
@@ -769,12 +764,12 @@
                                     class="w-full h-full rounded-xl object-cover bg-white/10">
                             </div>
                             <div class="experience-details">
-                                <div class="title typewriter-effect" style="--char-count: 28;">Consultor BD / Desarrollador</div>
+                                <div data-i18n="exp.tappers.role" class="title typewriter-effect" style="--char-count: 28;">Consultor BD / Desarrollador</div>
                                 <p
                                     class="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mt-1">
                                     TAP SOLUTIONS S.A.S
                                 </p>
-                                <p class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-0.5">
+                                <p data-i18n="exp.tappers.date" class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-0.5">
                                     Sep 2022 - Jun 2023 • Colombia (Remoto)
                                 </p>
                             </div>
@@ -783,11 +778,11 @@
                         <div class="flex-grow">
                             <ul
                                 class="space-y-3 pl-4 list-disc text-base text-slate-700 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
-                                <li>Consultoría y administración de bases de datos SQL Server, optimizando consultas
+                                <li data-i18n="exp.tappers.b1">Consultoría y administración de bases de datos SQL Server, optimizando consultas
                                     complejas.</li>
-                                <li>Desarrollo web y soporte técnico especializado en PHP, diagnosticando y resolviendo
+                                <li data-i18n="exp.tappers.b2">Desarrollo web y soporte técnico especializado en PHP, diagnosticando y resolviendo
                                     incidencias operativas.</li>
-                                <li>Ejecución de análisis de datos y generación de informes estratégicos para la
+                                <li data-i18n="exp.tappers.b3">Ejecución de análisis de datos y generación de informes estratégicos para la
                                     gerencia.</li>
                             </ul>
                         </div>
@@ -815,12 +810,12 @@
                                     class="w-full h-full rounded-xl object-cover">
                             </div>
                             <div class="experience-details">
-                                <div class="title typewriter-effect" style="--char-count: 28;">Desarrollador Web (Pasantía)</div>
+                                <div data-i18n="exp.ivss.role" class="title typewriter-effect" style="--char-count: 28;">Desarrollador Web (Pasantía)</div>
                                 <p
                                     class="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mt-1">
                                     Hospital “JOSÉ ANTONIO VARGAS”
                                 </p>
-                                <p class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-0.5">
+                                <p data-i18n="exp.ivss.date" class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-0.5">
                                     Abr 2021 - Jun 2021 • Venezuela
                                 </p>
                             </div>
@@ -829,11 +824,11 @@
                         <div class="flex-grow">
                             <ul
                                 class="space-y-3 pl-4 list-disc text-base text-slate-700 dark:text-gray-300 marker:text-primary-500 leading-relaxed">
-                                <li>Desarrollo de un sistema web integral con PHP (Laravel) y MySQL para citas e
+                                <li data-i18n="exp.ivss.b1">Desarrollo de un sistema web integral con PHP (Laravel) y MySQL para citas e
                                     inventario.</li>
-                                <li>Digitalización de registros manuales, migrando la información a bases de datos
+                                <li data-i18n="exp.ivss.b2">Digitalización de registros manuales, migrando la información a bases de datos
                                     seguras.</li>
-                                <li>Optimización de los tiempos de respuesta en la búsqueda de historias médicas.</li>
+                                <li data-i18n="exp.ivss.b3">Optimización de los tiempos de respuesta en la búsqueda de historias médicas.</li>
                             </ul>
                         </div>
 
@@ -863,7 +858,7 @@
 
     <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">Contacto</h2>
+            <h2 class="section-title" data-i18n="contact.title">Contacto</h2>
 
             <!-- Contact Card with Futuristic Style -->
             <div class="card-container">
@@ -871,26 +866,26 @@
                     <form id="contactForm" action="https://formspree.io/f/mrebnabe" method="POST"
                         class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
                         <div class="col-span-1">
-                            <label for="name"
+                            <label for="name" data-i18n="contact.nameLabel"
                                 class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Nombre</label>
-                            <input type="text" id="name" name="name" required
+                            <input type="text" id="name" name="name" required data-i18n-placeholder="contact.namePlaceholder"
                                 class="w-full px-4 py-3 rounded-xl bg-white/90 dark:bg-dark-900/60 border-2 border-gray-300/60 dark:border-slate-600/60 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all placeholder-gray-400"
                                 placeholder="Tu nombre">
                         </div>
 
                         <div class="col-span-1">
-                            <label for="email"
+                            <label for="email" data-i18n="contact.emailLabel"
                                 class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Correo
                                 electrónico</label>
-                            <input type="email" id="email" name="email" required
+                            <input type="email" id="email" name="email" required data-i18n-placeholder="contact.emailPlaceholder"
                                 class="w-full px-4 py-3 rounded-xl bg-white/90 dark:bg-dark-900/60 border-2 border-gray-300/60 dark:border-slate-600/60 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all placeholder-gray-400"
                                 placeholder="tucorreo@ejemplo.com">
                         </div>
 
                         <div class="col-span-1 md:col-span-2">
-                            <label for="message"
+                            <label for="message" data-i18n="contact.messageLabel"
                                 class="block text-sm font-medium text-dark-700 dark:text-gray-300 mb-2">Mensaje</label>
-                            <textarea id="message" name="message" rows="4" required
+                            <textarea id="message" name="message" rows="4" required data-i18n-placeholder="contact.messagePlaceholder"
                                 class="w-full px-4 py-3 rounded-xl bg-white/90 dark:bg-dark-900/60 border-2 border-gray-300/60 dark:border-slate-600/60 text-dark-800 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all placeholder-gray-400 resize-none"
                                 placeholder="¿En qué puedo ayudarte?"></textarea>
                         </div>
@@ -900,7 +895,7 @@
 
                         <div class="col-span-1 md:col-span-2 flex justify-end">
                             <button type="submit" id="submitBtn" class="btn-futuristic">
-                                <span>Enviar mensaje</span>
+                                <span data-i18n="contact.send">Enviar mensaje</span>
                                 <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -930,25 +925,25 @@
                         <img src="img/jlll-colored.png" alt="JLLL Logo" class="w-8 h-8 object-contain filter drop-shadow-[0_0_8px_rgba(14,165,233,0.25)]">
                         José <span class="text-primary-500">López</span>
                     </h3>
-                    <p class="text-dark-500 dark:text-gray-400 text-sm leading-relaxed max-w-xs">
+                    <p data-i18n="footer.summary" class="text-dark-500 dark:text-gray-400 text-sm leading-relaxed max-w-xs">
                         Ingeniero en Informática enfocado en crear soluciones web escalables, robustas y eficientes.
                     </p>
                 </div>
 
                 <div class="flex flex-col items-center md:items-center space-y-4">
-                    <h4 class="font-semibold text-dark-800 dark:text-white">Navegación</h4>
+                    <h4 data-i18n="footer.navTitle" class="font-semibold text-dark-800 dark:text-white">Navegación</h4>
                     <ul class="space-y-2 text-sm text-dark-500 dark:text-gray-400">
-                        <li><a href="#home" class="hover:text-primary-500 transition-colors">Inicio</a></li>
-                        <li><a href="#about" class="hover:text-primary-500 transition-colors">Sobre Mí</a></li>
-                        <li><a href="#experience" class="hover:text-primary-500 transition-colors">Experiencia</a></li>
-                        <li><a href="#contact" class="hover:text-primary-500 transition-colors">Contacto</a></li>
+                        <li><a href="#home" data-i18n="nav.home" class="hover:text-primary-500 transition-colors">Inicio</a></li>
+                        <li><a href="#about" data-i18n="nav.about" class="hover:text-primary-500 transition-colors">Sobre Mí</a></li>
+                        <li><a href="#experience" data-i18n="nav.experience" class="hover:text-primary-500 transition-colors">Experiencia</a></li>
+                        <li><a href="#contact" data-i18n="nav.contact" class="hover:text-primary-500 transition-colors">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div class="flex flex-col items-center md:items-end space-y-4">
                     <div
                         class="p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-right max-w-xs">
-                        <p class="text-primary-600 dark:text-primary-400 text-sm italic font-medium">
+                        <p data-i18n="footer.quote" class="text-primary-600 dark:text-primary-400 text-sm italic font-medium">
                             "Si puedes imaginarlo, puedes programarlo"
                         </p>
                         <span class="block text-xs text-dark-400 dark:text-gray-500 mt-2">— Alejandro Taboada
@@ -958,8 +953,8 @@
             </div>
 
             <div class="mt-12 pt-8 border-t border-gray-200 dark:border-white/5 text-center">
-                <p class="text-xs text-dark-400 dark:text-gray-500">
-                    &copy; 2025 José López.
+                <p data-i18n="footer.rights" class="text-xs text-dark-400 dark:text-gray-500">
+                    &copy; 2026 José López.
                 </p>
             </div>
         </div>
@@ -967,6 +962,7 @@
 
     <script src="js/svg-theme.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/generateCV.js"></script>
 </body>
 
