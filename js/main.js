@@ -22,9 +22,9 @@ const TextTyper = (() => {
     function type(target, text, index = 0) {
         if (index < text.length) {
             target.textContent += text.charAt(index);
-            timer = setTimeout(() => type(target, text, index + 1), 100);
+            timer = setTimeout(() => type(target, text, index + 1), 85);
         } else {
-            timer = setTimeout(() => erase(target), 2000);
+            timer = setTimeout(() => erase(target), 2200);
         }
     }
 
@@ -32,10 +32,10 @@ const TextTyper = (() => {
         const text = target.textContent;
         if (text.length > 0) {
             target.textContent = text.substring(0, text.length - 1);
-            timer = setTimeout(() => erase(target), 50);
+            timer = setTimeout(() => erase(target), 45);
         } else {
             i = (i + 1) % words.length;
-            timer = setTimeout(() => type(target, words[i]), 500);
+            timer = setTimeout(() => type(target, words[i]), 400);
         }
     }
 
@@ -65,149 +65,13 @@ const TextTyper = (() => {
 
 window.TextTyper = TextTyper;
 
-// --- 2. SUBSTRATE EFFECT MODULE (FONDO ANIMADO OPTIMIZADO) ---
-const SubstrateEffect = (() => {
-    let canvas, context, width, height, dpr;
-    let boids = [];
-    let animationId;
-    let isRunning = false;
-
-    const random = Math.random;
-    const prefersReducedMotion = () =>
-        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const Boid = function (x, y, angle) {
-        this.x = x;
-        this.y = y;
-        this.angle = Math.pow(random(), 20) + angle;
-        this.dx = Math.cos(this.angle);
-        this.dy = Math.sin(this.angle);
-        this.life = random() * 100 + 100;
-        this.isDead = false;
-
-        this.update = function (data) {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-                context.strokeStyle = 'rgba(56, 189, 248, 0.3)';
-                context.lineWidth = 1.2;
-            } else {
-                context.strokeStyle = 'rgba(0, 0, 0, 0.1)';
-                context.lineWidth = 1.0;
-            }
-
-            context.beginPath();
-            context.moveTo(this.x, this.y);
-            this.x += this.dx * 2;
-            this.y += this.dy * 2;
-            this.life -= 2;
-            context.lineTo(this.x, this.y);
-            context.stroke();
-
-            const index = (Math.floor(this.x) + Math.floor(this.y) * width) * 4;
-            if (this.life <= 0) this.kill();
-            if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.kill();
-            if (data && data[index + 3] > 0) this.kill();
-        };
-
-        this.kill = function () {
-            const idx = boids.indexOf(this);
-            if (idx > -1) boids.splice(idx, 1);
-            this.isDead = true;
-        };
-    };
-
-    function init() {
-        if (!document.getElementById('substrate-canvas')) {
-            canvas = document.createElement('canvas');
-            canvas.id = 'substrate-canvas';
-            document.body.insertBefore(canvas, document.body.firstChild);
-            context = canvas.getContext('2d', { willReadFrequently: true });
-            window.addEventListener('resize', resize);
-            resize();
-            window.addEventListener('pointerdown', function (event) {
-                if (prefersReducedMotion()) return;
-                const x = event.clientX * dpr;
-                const y = event.clientY * dpr;
-                const angle = random() * 360 * Math.PI / 180;
-                boids.push(new Boid(x, y, angle));
-            });
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    stop();
-                } else if (!prefersReducedMotion()) {
-                    start();
-                }
-            });
-        }
-    }
-
-    function resize() {
-        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-        width = Math.floor(window.innerWidth * dpr);
-        height = Math.floor(window.innerHeight * dpr);
-        canvas.width = width;
-        canvas.height = height;
-        canvas.style.width = window.innerWidth + 'px';
-        canvas.style.height = window.innerHeight + 'px';
-        context.setTransform(1, 0, 0, 1, 0, 0);
-        boids = [];
-        startBoids();
-    }
-
-    function startBoids() {
-        const x = width * 0.25 + random() * width * 0.5;
-        const y = height * 0.25 + random() * height * 0.5;
-        const angle = random() * 360 * Math.PI / 180;
-        boids.push(new Boid(x, y, angle));
-    }
-
-    function loop() {
-        if (!isRunning || document.hidden) return;
-        const image = context.getImageData(0, 0, width, height);
-        const data = image.data;
-        for (let i = 0; i < boids.length; i++) {
-            const boid = boids[i];
-            boid.update(data);
-            if (!boid.isDead && random() > 0.8 && boids.length < 400) {
-                const angle = boid.angle + (random() > 0.5 ? 90 : -90) * Math.PI / 180;
-                boids.push(new Boid(boid.x, boid.y, angle));
-            }
-        }
-        if (boids.length === 0 && random() > 0.99) startBoids();
-        animationId = requestAnimationFrame(loop);
-    }
-
-    function start() {
-        if (isRunning || prefersReducedMotion() || document.hidden) return;
-        isRunning = true;
-        loop();
-    }
-
-    function stop() {
-        isRunning = false;
-        if (animationId) {
-            cancelAnimationFrame(animationId);
-            animationId = null;
-        }
-    }
-
-    function reset() {
-        if (!context) return;
-        context.clearRect(0, 0, width, height);
-        boids = [];
-        startBoids();
-    }
-
-    return { init, start, stop, reset };
-})();
-
-// --- 3. TOAST HELPER ---
+// --- 2. TOAST HELPER ---
 function showToast(message) {
     let toast = document.getElementById('app-toast');
     if (!toast) {
         toast = document.createElement('div');
         toast.id = 'app-toast';
-        toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[10000] px-5 py-3 rounded-xl bg-dark-900/90 dark:bg-white/90 text-white dark:text-dark-900 text-sm font-medium shadow-xl backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none';
+        toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[10000] px-4 py-2.5 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-sm font-medium shadow-lg transition-all duration-300 opacity-0 pointer-events-none';
         document.body.appendChild(toast);
     }
     toast.textContent = message;
@@ -221,15 +85,9 @@ function showToast(message) {
     }, 2600);
 }
 
-// --- 4. INICIALIZACIÓN GENERAL ---
+// --- 3. INICIALIZACIÓN GENERAL ---
 document.addEventListener('DOMContentLoaded', function () {
-
-    // Iniciar Animación de Texto
     TextTyper.init();
-
-    // Iniciar Fondo Substrate
-    SubstrateEffect.init();
-    SubstrateEffect.start();
 
     // Gestión del Tema (Dark/Light)
     const themeToggleBtn = document.getElementById('themeToggle');
@@ -241,12 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
         htmlElement.classList.remove('dark');
     }
 
-    if (typeof updateSVGColors === 'function') {
-        updateSVGColors();
-    }
-
-    setTimeout(() => { SubstrateEffect.reset(); }, 50);
-
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
             if (htmlElement.classList.contains('dark')) {
@@ -256,10 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 htmlElement.classList.add('dark');
                 localStorage.theme = 'dark';
             }
-            SubstrateEffect.reset();
-            if (typeof updateSVGColors === 'function') {
-                updateSVGColors();
-            }
         });
     }
 
@@ -267,11 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                if (entry.target.classList.contains('reveal-on-scroll')) {
-                    entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.add('animate-fade-in');
-                }
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
@@ -280,21 +124,9 @@ document.addEventListener('DOMContentLoaded', function () {
         rootMargin: "0px 0px -20px 0px"
     });
 
-    document.querySelectorAll('.experience-card, .section-title, .about-content, .reveal-on-scroll').forEach(element => {
+    document.querySelectorAll('.reveal-on-scroll').forEach(element => {
         observer.observe(element);
     });
-
-    // --- TILT & GLOW ---
-    if (typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(document.querySelectorAll(".plugin-card.futuristic"), {
-            max: 3,
-            speed: 1000,
-            glare: true,
-            "max-glare": 0.1,
-            scale: 1.01,
-            gyroscope: true
-        });
-    }
 
     // --- CONTACT FORM HANDLER ---
     const contactForm = document.getElementById('contactForm');
@@ -327,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (response.ok) {
                     if (formStatus) {
-                        formStatus.className = "col-span-1 md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 animate-fade-in";
+                        formStatus.className = "md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50";
                         formStatus.textContent = dict.success;
                     }
                     contactForm.reset();
@@ -336,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             } catch (error) {
                 if (formStatus) {
-                    formStatus.className = "col-span-1 md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 animate-fade-in";
+                    formStatus.className = "md:col-span-2 text-center p-3 rounded-lg text-sm font-medium bg-red-50 text-red-700 dark:bg-red-950/50 dark:text-red-300 border border-red-200 dark:border-red-800/50";
                     formStatus.textContent = dict.error;
                 }
             } finally {
@@ -347,21 +179,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- BOTÓN VOLVER ARRIBA (BACK TO TOP) ---
+    // --- BOTÓN VOLVER ARRIBA ---
     const backToTopBtn = document.getElementById('backToTop');
     if (backToTopBtn) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
+            if (window.scrollY > 320) {
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
             }
         });
         backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 });

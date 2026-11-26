@@ -11,7 +11,6 @@ window.PORTFOLIO_DATA = {
             contact: "Contacto"
         },
         hero: {
-            badge: "Disponible para proyectos remotos",
             greeting: "Hola, soy",
             summary: "Desarrollo aplicaciones web escalables con Django, Odoo, Laravel y Next.js, respaldadas por arquitecturas sólidas en PostgreSQL, MySQL y SQL Server.",
             downloadCv: "Descargar CV",
@@ -120,7 +119,7 @@ window.PORTFOLIO_DATA = {
         contact: {
             title: "Contacto",
             copyBtn: "Copiar correo",
-            location: "Palo Negro, Venezuela (Remoto)",
+            location: "Palo Negro, Venezuela",
             nameLabel: "Nombre",
             namePlaceholder: "Tu nombre",
             emailLabel: "Correo electrónico",
@@ -165,7 +164,6 @@ window.PORTFOLIO_DATA = {
             contact: "Contact"
         },
         hero: {
-            badge: "Available for remote work",
             greeting: "Hi, I'm",
             summary: "I build scalable web applications with Django, Odoo, Laravel, and Next.js, backed by solid PostgreSQL, MySQL, and SQL Server architectures.",
             downloadCv: "Download CV",
@@ -274,7 +272,7 @@ window.PORTFOLIO_DATA = {
         contact: {
             title: "Contact",
             copyBtn: "Copy email",
-            location: "Palo Negro, Venezuela (Remote)",
+            location: "Palo Negro, Venezuela",
             nameLabel: "Name",
             namePlaceholder: "Your name",
             emailLabel: "Email",

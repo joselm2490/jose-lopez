@@ -22,50 +22,37 @@
 
         grid.innerHTML = dict.projects.items.map(project => {
             const stackHtml = project.stack.map(tech =>
-                `<span class="px-2.5 py-1 text-xs font-medium rounded-lg bg-primary-500/10 text-primary-700 dark:text-primary-300 border border-primary-500/20">${tech}</span>`
+                `<span class="px-2.5 py-1 text-xs font-medium rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/70">${tech}</span>`
             ).join('');
 
             const actionHtml = project.url
-                ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline mt-auto pt-4">
+                ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 mt-auto pt-5 transition-colors">
                         <span>${dict.projects.liveBtn}</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                    </a>`
-                : `<span class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-gray-400 mt-auto pt-4">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                : `<span class="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-auto pt-5">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                         <span>${dict.projects.privateBadge}</span>
                    </span>`;
 
             return `
-                <div class="card-container reveal-on-scroll visible">
-                    <div class="plugin-card futuristic flex flex-col h-full">
-                        <div class="mb-3">
-                            <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary-500/15 text-primary-600 dark:text-primary-400 border border-primary-500/25">
-                                ${project.badge}
-                            </span>
-                        </div>
-                        <h3 class="text-xl font-bold text-dark-900 dark:text-white mb-3">${project.title}</h3>
-                        <p class="text-sm text-slate-700 dark:text-gray-300 leading-relaxed mb-5 flex-grow">
-                            ${project.description}
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            ${stackHtml}
-                        </div>
-                        ${actionHtml}
+                <article class="surface-card p-6 flex flex-col h-full reveal-on-scroll visible">
+                    <div class="mb-3">
+                        <span class="inline-block text-xs font-semibold tracking-wide text-sky-700 dark:text-sky-400">
+                            ${project.badge}
+                        </span>
                     </div>
-                </div>
+                    <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-50 mb-2.5 tracking-tight">${project.title}</h3>
+                    <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5 flex-grow">
+                        ${project.description}
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        ${stackHtml}
+                    </div>
+                    ${actionHtml}
+                </article>
             `;
         }).join('');
-
-        if (typeof VanillaTilt !== 'undefined') {
-            VanillaTilt.init(grid.querySelectorAll('.plugin-card.futuristic'), {
-                max: 3,
-                speed: 1000,
-                glare: true,
-                'max-glare': 0.1,
-                scale: 1.01,
-                gyroscope: true
-            });
-        }
     }
 
     function setLanguage(lang) {

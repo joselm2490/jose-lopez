@@ -34,8 +34,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['monospace']
+        sans: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace']
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out'
