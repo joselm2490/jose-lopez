@@ -7,133 +7,27 @@ window.generateCV = async function () {
     }
 
     const lang = typeof window.getCurrentLang === 'function' ? window.getCurrentLang() : 'es';
+    const rootData = window.PORTFOLIO_DATA && window.PORTFOLIO_DATA[lang === 'en' ? 'en' : 'es'];
+    if (!rootData || !rootData.cv) {
+        alert('Error: Portfolio data is not loaded.');
+        return;
+    }
 
-    const cvContent = {
-        es: {
-            subtitle: "INGENIERO EN INFORMÁTICA | DESARROLLADOR FULL STACK",
-            locationLabel: "Ubicación: Palo Negro, Venezuela",
-            sectionProfile: "PERFIL",
-            sectionSkills: "HABILIDADES",
-            sectionExperience: "EXPERIENCIA PROFESIONAL",
-            profileText: "Desarrollador Full Stack con experiencia en desarrollo web utilizando Laravel, PHP, Python, Django y Odoo, y gestión de bases de datos (SQL Server, MySQL y PostgreSQL). Comprometido con la resolución de problemas técnicos, capacidad analítica y adaptación a metodologías ágiles.",
-            skills: [
-                ["Backend", "PHP, Laravel, Livewire, Python, Django, Odoo"],
-                ["Frontend", "HTML5, Tailwind CSS, Bootstrap CSS, JavaScript, Next.js"],
-                ["Bases de Datos", "MySQL, SQL Server, PostgreSQL"],
-                ["Control de Versiones", "Git, GitHub, GitLab"],
-                ["Gestión y Com.", "Trello, OpenProject, Google Meet, Zoom"],
-                ["Otros", "Docker, Postman"]
-            ],
-            experiences: [
-                {
-                    role: "Desarrollador Web",
-                    company: "SISTEMAS TECNOLÓGICOS ALCARAVÁN, S.A",
-                    date: "Ago 2025 - Presente • Venezuela",
-                    bullets: [
-                        "Plataforma 'Güirirí' (Odoo): sistema de gestión tributaria municipal utilizado activamente por diversas alcaldías a nivel nacional para la automatización de trámites en línea.",
-                        "Plataforma SERGIDESOL (Django): Servicio Desconcentrado de Gestión Integral de los Desechos Sólidos; desarrollo en sistema integral de recaudación y gestión municipal (contribuyentes, inmuebles, facturación, taquillas, retenciones fiscales y reportes) con PostgreSQL, Tailwind CSS y Docker.",
-                        "Colaboración con el equipo utilizando Python, Django, Odoo, Next.js y PostgreSQL para el soporte y escalabilidad de ambos sistemas."
-                    ]
-                },
-                {
-                    role: "Desarrollador Web",
-                    company: "UNERG",
-                    date: "May 2025 - Jul 2025 • Venezuela",
-                    bullets: [
-                        "Reingeniería integral del Sistema Clínico Odontológico utilizando PHP y Laravel 12 para optimizar la atención y gestión administrativa.",
-                        "Desarrollo de interfaces interactivas con Livewire 3 y Tailwind CSS para la administración de historias clínicas y evaluación académica.",
-                        "Gestión de datos con MySQL para proteger la información sensible."
-                    ]
-                },
-                {
-                    role: "Consultor BD / Desarrollador Web",
-                    company: "TAP SOLUTIONS S.A.S",
-                    date: "Sep 2022 - Jun 2023 • Colombia (Remoto)",
-                    bullets: [
-                        "Consultoría y administración de bases de datos SQL Server, realizando mantenimiento y optimización de consultas para asegurar la integridad de la información.",
-                        "Desarrollo web y soporte técnico especializado en PHP, diagnosticando y resolviendo incidencias para garantizar la continuidad operativa de la plataforma.",
-                        "Ejecución de análisis de datos y generación de informes estratégicos para la toma de decisiones empresariales."
-                    ]
-                },
-                {
-                    role: "Desarrollador Web (Pasantía)",
-                    company: "IVSS HOSPITAL “JOSÉ ANTONIO VARGAS”",
-                    date: "Abr 2021 - Jun 2021 • Venezuela",
-                    bullets: [
-                        "Desarrollo de un sistema web integral utilizando PHP (Laravel) y MySQL para la automatización de citas médicas, control de inventario en farmacia y gestión de archivos.",
-                        "Digitalización de registros manuales vulnerables, migrando la información a una base de datos segura para garantizar la integridad del inventario y los datos de pacientes.",
-                        "Optimización de los tiempos de respuesta en la búsqueda de historias médicas y generación de reportes automatizados en PDF para la toma de decisiones."
-                    ]
-                }
-            ],
-            fileName: "CV_Jose_Lopez_ES.pdf"
-        },
-        en: {
-            subtitle: "COMPUTER ENGINEER | FULL STACK DEVELOPER",
-            locationLabel: "Location: Palo Negro, Venezuela",
-            sectionProfile: "PROFILE",
-            sectionSkills: "SKILLS",
-            sectionExperience: "PROFESSIONAL EXPERIENCE",
-            profileText: "Full Stack Developer experienced in building web applications with Laravel, PHP, Python, Django, and Odoo, and managing relational databases (SQL Server, MySQL, PostgreSQL). Strong analytical problem-solving skills and seamless adaptation to agile workflows.",
-            skills: [
-                ["Backend", "PHP, Laravel, Livewire, Python, Django, Odoo"],
-                ["Frontend", "HTML5, Tailwind CSS, Bootstrap CSS, JavaScript, Next.js"],
-                ["Databases", "MySQL, SQL Server, PostgreSQL"],
-                ["Version Control", "Git, GitHub, GitLab"],
-                ["Management & Comm.", "Trello, OpenProject, Google Meet, Zoom"],
-                ["Tools", "Docker, Postman"]
-            ],
-            experiences: [
-                {
-                    role: "Web Developer",
-                    company: "SISTEMAS TECNOLÓGICOS ALCARAVÁN, S.A",
-                    date: "Aug 2025 - Present • Venezuela",
-                    bullets: [
-                        "'Güirirí' Platform (Odoo): municipal tax management system actively used by multiple municipalities nationwide to automate online taxpayer procedures.",
-                        "SERGIDESOL Platform (Django): Decentralized Service for Integrated Solid Waste Management; development on a comprehensive municipal billing and collection system (taxpayers, properties, invoicing, cashier desks, tax withholdings, and reports) with PostgreSQL, Tailwind CSS, and Docker.",
-                        "Team collaboration using Python, Django, Odoo, Next.js, and PostgreSQL for ongoing support and scalability across both platforms."
-                    ]
-                },
-                {
-                    role: "Web Developer",
-                    company: "UNERG",
-                    date: "May 2025 - Jul 2025 • Venezuela",
-                    bullets: [
-                        "Full re-engineering of the University Dental Clinical System using PHP and Laravel 12 to optimize patient care and administrative workflows.",
-                        "Development of interactive interfaces with Livewire 3 and Tailwind CSS for clinical record management and academic evaluation.",
-                        "MySQL database management to safeguard sensitive patient and academic data."
-                    ]
-                },
-                {
-                    role: "DB Consultant / Web Developer",
-                    company: "TAP SOLUTIONS S.A.S",
-                    date: "Sep 2022 - Jun 2023 • Colombia (Remote)",
-                    bullets: [
-                        "SQL Server database consulting and administration, performing maintenance and query optimization to ensure data integrity.",
-                        "Web development and specialized PHP technical support, diagnosing and resolving incidents to guarantee platform uptime.",
-                        "Data analysis and generation of strategic reports for management decision-making."
-                    ]
-                },
-                {
-                    role: "Web Developer (Internship)",
-                    company: "IVSS HOSPITAL “JOSÉ ANTONIO VARGAS”",
-                    date: "Apr 2021 - Jun 2021 • Venezuela",
-                    bullets: [
-                        "Developed a comprehensive web system using PHP (Laravel) and MySQL for medical appointment scheduling, pharmacy inventory control, and record management.",
-                        "Digitized vulnerable manual records, migrating data into a secure relational database to protect inventory and patient records.",
-                        "Optimized search response times for medical histories and implemented automated PDF report generation."
-                    ]
-                }
-            ],
-            fileName: "CV_Jose_Lopez_EN.pdf"
-        }
-    };
+    const data = rootData.cv;
+    const expKeys = ['alcaravan', 'unerg', 'tappers', 'ivss'];
+    const experiences = expKeys.map(key => {
+        const item = rootData.exp[key];
+        return {
+            role: item.role,
+            company: item.company,
+            date: item.date,
+            bullets: item.cvBullets
+        };
+    });
 
-    const data = cvContent[lang === 'en' ? 'en' : 'es'];
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'mm', 'a4');
 
-    // --- CONFIGURACIÓN DE ESTILO ---
     const primaryColor = [31, 41, 55];
     const accentColor = [75, 85, 99];
     const highlightColor = [37, 99, 235];
@@ -256,7 +150,7 @@ window.generateCV = async function () {
         rightY += 3;
     };
 
-    data.experiences.forEach(exp => {
+    experiences.forEach(exp => {
         renderExperience(exp.role, exp.company, exp.date, exp.bullets);
     });
 
